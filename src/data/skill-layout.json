@@ -1,0 +1,1118 @@
+{
+  "nodes": [
+    {
+      "id": "avatar",
+      "position": {
+        "x": 905,
+        "y": 500
+      },
+      "data": {
+        "label": "Avatar"
+      },
+      "type": "avatarNode",
+      "draggable": false,
+      "measured": {
+        "width": 330,
+        "height": 377
+      }
+    },
+    {
+      "id": "etica-e-legislacao",
+      "position": {
+        "x": 800,
+        "y": 150
+      },
+      "type": "diamondNode",
+      "data": {
+        "label": "Ética e Legislação",
+        "icon": {},
+        "status": "pendente"
+      },
+      "measured": {
+        "width": 140,
+        "height": 140
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "introducao-a-programacao",
+      "position": {
+        "x": 1400,
+        "y": 150
+      },
+      "type": "diamondNode",
+      "data": {
+        "label": "Introdução à Programação",
+        "icon": {},
+        "status": "pendente"
+      },
+      "measured": {
+        "width": 140,
+        "height": 140
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "introducao-a-sistemas-de-informacao",
+      "position": {
+        "x": 600,
+        "y": 150
+      },
+      "type": "diamondNode",
+      "data": {
+        "label": "Introdução a Sistemas de Informação",
+        "icon": {},
+        "status": "pendente"
+      },
+      "measured": {
+        "width": 140,
+        "height": 140
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "portugues-instrumental-i",
+      "position": {
+        "x": 1000,
+        "y": 150
+      },
+      "type": "diamondNode",
+      "data": {
+        "label": "Português Instrumental I",
+        "icon": {},
+        "status": "pendente"
+      },
+      "measured": {
+        "width": 140,
+        "height": 140
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "pre-calculo",
+      "position": {
+        "x": 2000,
+        "y": 150
+      },
+      "type": "diamondNode",
+      "data": {
+        "label": "Pré-Cálculo",
+        "icon": {},
+        "status": "pendente"
+      },
+      "measured": {
+        "width": 140,
+        "height": 140
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "principios-da-administracao-i",
+      "position": {
+        "x": 1800,
+        "y": 150
+      },
+      "type": "diamondNode",
+      "data": {
+        "label": "Princípios da Administração I",
+        "icon": {},
+        "status": "pendente"
+      },
+      "measured": {
+        "width": 140,
+        "height": 140
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "algoritmos-e-estrutura-de-dados-i",
+      "position": {
+        "x": 1000,
+        "y": -200
+      },
+      "type": "diamondNode",
+      "data": {
+        "label": "Algoritmos e Estrutura de Dados I",
+        "icon": {},
+        "status": "pendente"
+      },
+      "measured": {
+        "width": 140,
+        "height": 140
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "calculo-diferencial-e-integral-i",
+      "position": {
+        "x": 2000,
+        "y": -200
+      },
+      "type": "diamondNode",
+      "data": {
+        "label": "Cálculo Diferencial e Integral I",
+        "icon": {},
+        "status": "pendente"
+      },
+      "measured": {
+        "width": 140,
+        "height": 140
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "ingles-instrumental-i",
+      "position": {
+        "x": 1400,
+        "y": -200
+      },
+      "type": "diamondNode",
+      "data": {
+        "label": "Inglês Instrumental I",
+        "icon": {},
+        "status": "pendente"
+      },
+      "measured": {
+        "width": 140,
+        "height": 140
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "metodos-e-tecnicas-de-pesquisa",
+      "position": {
+        "x": 600,
+        "y": -200
+      },
+      "type": "diamondNode",
+      "data": {
+        "label": "Métodos e Técnicas de Pesquisa",
+        "icon": {},
+        "status": "pendente"
+      },
+      "measured": {
+        "width": 140,
+        "height": 140
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "programacao-orientada-a-objetos-i",
+      "position": {
+        "x": 1600,
+        "y": -200
+      },
+      "type": "diamondNode",
+      "data": {
+        "label": "Programação Orientada a Objetos I",
+        "icon": {},
+        "status": "pendente"
+      },
+      "measured": {
+        "width": 140,
+        "height": 140
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "sistemas-digitais-e-circuitos-combinacionais",
+      "position": {
+        "x": 800,
+        "y": -200
+      },
+      "type": "diamondNode",
+      "data": {
+        "label": "Sistemas Digitais e Circuitos Combinacionais",
+        "icon": {},
+        "status": "pendente"
+      },
+      "measured": {
+        "width": 140,
+        "height": 140
+      }
+    },
+    {
+      "id": "algoritmos-e-estrutura-de-dados-ii",
+      "position": {
+        "x": 1000,
+        "y": -550
+      },
+      "type": "diamondNode",
+      "data": {
+        "label": "Algoritmos e Estrutura de Dados II",
+        "icon": {},
+        "status": "pendente"
+      },
+      "measured": {
+        "width": 140,
+        "height": 140
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "arquitetura-e-organizacao-de-computadores",
+      "position": {
+        "x": 800,
+        "y": -550
+      },
+      "type": "diamondNode",
+      "data": {
+        "label": "Arquitetura e Organização de Computadores",
+        "icon": {},
+        "status": "pendente"
+      },
+      "measured": {
+        "width": 140,
+        "height": 140
+      }
+    },
+    {
+      "id": "banco-de-dados-i",
+      "position": {
+        "x": 400,
+        "y": -550
+      },
+      "type": "diamondNode",
+      "data": {
+        "label": "Banco de Dados I",
+        "icon": {},
+        "status": "pendente"
+      },
+      "measured": {
+        "width": 140,
+        "height": 140
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "contabilidade",
+      "position": {
+        "x": 1200,
+        "y": -550
+      },
+      "type": "diamondNode",
+      "data": {
+        "label": "Contabilidade",
+        "icon": {},
+        "status": "pendente"
+      },
+      "measured": {
+        "width": 140,
+        "height": 140
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "engenharia-de-software-i",
+      "position": {
+        "x": 1600,
+        "y": -550
+      },
+      "type": "diamondNode",
+      "data": {
+        "label": "Engenharia de Software I",
+        "icon": {},
+        "status": "pendente"
+      },
+      "measured": {
+        "width": 140,
+        "height": 140
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "algebra-linear-e-geometria-analitica",
+      "position": {
+        "x": 1200,
+        "y": -900
+      },
+      "type": "diamondNode",
+      "data": {
+        "label": "Álgebra Linear e Geometria Analítica",
+        "icon": {},
+        "status": "pendente"
+      },
+      "measured": {
+        "width": 140,
+        "height": 140
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "matematica-discreta",
+      "position": {
+        "x": 1600,
+        "y": -900
+      },
+      "type": "diamondNode",
+      "data": {
+        "label": "Matemática Discreta",
+        "icon": {},
+        "status": "pendente"
+      },
+      "measured": {
+        "width": 140,
+        "height": 140
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "programacao-orientada-a-objetos-ii",
+      "position": {
+        "x": 1800,
+        "y": -900
+      },
+      "type": "diamondNode",
+      "data": {
+        "label": "Programação Orientada a Objetos II",
+        "icon": {},
+        "status": "pendente"
+      },
+      "measured": {
+        "width": 140,
+        "height": 140
+      }
+    },
+    {
+      "id": "programacao-web",
+      "position": {
+        "x": 0,
+        "y": -900
+      },
+      "type": "diamondNode",
+      "data": {
+        "label": "Programação Web",
+        "icon": {},
+        "status": "pendente"
+      },
+      "measured": {
+        "width": 140,
+        "height": 140
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "sistemas-operacionais",
+      "position": {
+        "x": 800,
+        "y": -900
+      },
+      "type": "diamondNode",
+      "data": {
+        "label": "Sistemas Operacionais",
+        "icon": {},
+        "status": "pendente"
+      },
+      "measured": {
+        "width": 140,
+        "height": 140
+      }
+    },
+    {
+      "id": "engenharia-de-software-ii",
+      "position": {
+        "x": 1400,
+        "y": -1250
+      },
+      "type": "diamondNode",
+      "data": {
+        "label": "Engenharia de Software II",
+        "icon": {},
+        "status": "pendente"
+      },
+      "measured": {
+        "width": 140,
+        "height": 140
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "governanca-e-gestao-de-informacao",
+      "position": {
+        "x": 1600,
+        "y": -1250
+      },
+      "type": "diamondNode",
+      "data": {
+        "label": "Governança e Gestão de Informação",
+        "icon": {},
+        "status": "pendente"
+      },
+      "measured": {
+        "width": 140,
+        "height": 140
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "probabilidade-e-estatistica",
+      "position": {
+        "x": 2000,
+        "y": -1250
+      },
+      "type": "diamondNode",
+      "data": {
+        "label": "Probabilidade e Estatística",
+        "icon": {},
+        "status": "pendente"
+      },
+      "measured": {
+        "width": 140,
+        "height": 140
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "redes-de-computadores-i",
+      "position": {
+        "x": 800,
+        "y": -1250
+      },
+      "type": "diamondNode",
+      "data": {
+        "label": "Redes de Computadores I",
+        "icon": {},
+        "status": "pendente"
+      },
+      "measured": {
+        "width": 140,
+        "height": 140
+      }
+    },
+    {
+      "id": "optativa-i",
+      "position": {
+        "x": 200,
+        "y": -1250
+      },
+      "type": "diamondNode",
+      "data": {
+        "label": "Optativa I",
+        "icon": {},
+        "status": "pendente"
+      },
+      "measured": {
+        "width": 140,
+        "height": 140
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "programacao-para-dispositivos-moveis",
+      "position": {
+        "x": 1800,
+        "y": -1600
+      },
+      "type": "diamondNode",
+      "data": {
+        "label": "Programação para Dispositivos Móveis",
+        "icon": {},
+        "status": "pendente"
+      },
+      "measured": {
+        "width": 140,
+        "height": 140
+      }
+    },
+    {
+      "id": "projeto-e-analise-de-algoritmos",
+      "position": {
+        "x": 1000,
+        "y": -1600
+      },
+      "type": "diamondNode",
+      "data": {
+        "label": "Projeto e Análise de Algoritmos",
+        "icon": {},
+        "status": "pendente"
+      },
+      "measured": {
+        "width": 140,
+        "height": 140
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "sistemas-de-apoio-a-decisao",
+      "position": {
+        "x": 400,
+        "y": -1600
+      },
+      "type": "diamondNode",
+      "data": {
+        "label": "Sistemas de Apoio a Decisão",
+        "icon": {},
+        "status": "pendente"
+      },
+      "measured": {
+        "width": 140,
+        "height": 140
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "sistemas-distribuidos",
+      "position": {
+        "x": 800,
+        "y": -1600
+      },
+      "type": "diamondNode",
+      "data": {
+        "label": "Sistemas Distribuídos",
+        "icon": {},
+        "status": "pendente"
+      },
+      "measured": {
+        "width": 140,
+        "height": 140
+      }
+    },
+    {
+      "id": "optativa-ii",
+      "position": {
+        "x": 1600,
+        "y": -1600
+      },
+      "type": "diamondNode",
+      "data": {
+        "label": "Optativa II",
+        "icon": {},
+        "status": "pendente"
+      },
+      "measured": {
+        "width": 140,
+        "height": 140
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "gestao-de-projetos",
+      "position": {
+        "x": 1200,
+        "y": -1950
+      },
+      "type": "diamondNode",
+      "data": {
+        "label": "Gestão de Projetos",
+        "icon": {},
+        "status": "pendente"
+      },
+      "measured": {
+        "width": 140,
+        "height": 140
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "inteligencia-artificial",
+      "position": {
+        "x": 1000,
+        "y": -1950
+      },
+      "type": "diamondNode",
+      "data": {
+        "label": "Inteligência Artificial",
+        "icon": {},
+        "status": "pendente"
+      },
+      "measured": {
+        "width": 140,
+        "height": 140
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "interface-humano-computador",
+      "position": {
+        "x": 0,
+        "y": -1950
+      },
+      "type": "diamondNode",
+      "data": {
+        "label": "Interface Humano Computador",
+        "icon": {},
+        "status": "pendente"
+      },
+      "measured": {
+        "width": 140,
+        "height": 140
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "trabalho-de-conclusao-de-curso-i",
+      "position": {
+        "x": 600,
+        "y": -1950
+      },
+      "type": "diamondNode",
+      "data": {
+        "label": "Trabalho de Conclusão de Curso I",
+        "icon": {},
+        "status": "pendente"
+      },
+      "measured": {
+        "width": 140,
+        "height": 140
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "optativa-iii",
+      "position": {
+        "x": 400,
+        "y": -1950
+      },
+      "type": "diamondNode",
+      "data": {
+        "label": "Optativa III",
+        "icon": {},
+        "status": "pendente"
+      },
+      "measured": {
+        "width": 140,
+        "height": 140
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "empreendedorismo",
+      "position": {
+        "x": 1200,
+        "y": -2300
+      },
+      "type": "diamondNode",
+      "data": {
+        "label": "Empreendedorismo",
+        "icon": {},
+        "status": "pendente"
+      },
+      "measured": {
+        "width": 140,
+        "height": 140
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "qualidade-de-software",
+      "position": {
+        "x": 1400,
+        "y": -2300
+      },
+      "type": "diamondNode",
+      "data": {
+        "label": "Qualidade de Software",
+        "icon": {},
+        "status": "pendente"
+      },
+      "measured": {
+        "width": 140,
+        "height": 140
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "trabalho-de-conclusao-de-curso-ii",
+      "position": {
+        "x": 600,
+        "y": -2300
+      },
+      "type": "diamondNode",
+      "data": {
+        "label": "Trabalho de Conclusão de Curso II",
+        "icon": {},
+        "status": "pendente"
+      },
+      "measured": {
+        "width": 140,
+        "height": 140
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "optativa-iv",
+      "position": {
+        "x": 400,
+        "y": -2300
+      },
+      "type": "diamondNode",
+      "data": {
+        "label": "Optativa IV",
+        "icon": {},
+        "status": "pendente"
+      },
+      "measured": {
+        "width": 140,
+        "height": 140
+      },
+      "selected": true,
+      "dragging": false
+    }
+  ],
+  "edges": [
+    {
+      "id": "e-algoritmos-e-estrutura-de-dados-i-introducao-a-programacao",
+      "source": "algoritmos-e-estrutura-de-dados-i",
+      "target": "introducao-a-programacao",
+      "sourceHandle": "s-right",
+      "targetHandle": "t-left",
+      "animated": false,
+      "type": "smoothstep",
+      "pathOptions": {
+        "offset": 62,
+        "borderRadius": 15
+      },
+      "style": {
+        "stroke": "#4b5563",
+        "strokeWidth": 2
+      }
+    },
+    {
+      "id": "e-calculo-diferencial-e-integral-i-pre-calculo",
+      "source": "calculo-diferencial-e-integral-i",
+      "target": "pre-calculo",
+      "sourceHandle": "s-bottom",
+      "targetHandle": "t-top",
+      "animated": false,
+      "type": "smoothstep",
+      "pathOptions": {
+        "offset": 62,
+        "borderRadius": 15
+      },
+      "style": {
+        "stroke": "#4b5563",
+        "strokeWidth": 2
+      }
+    },
+    {
+      "id": "e-algoritmos-e-estrutura-de-dados-ii-algoritmos-e-estrutura-de-dados-i",
+      "source": "algoritmos-e-estrutura-de-dados-ii",
+      "target": "algoritmos-e-estrutura-de-dados-i",
+      "sourceHandle": "s-bottom",
+      "targetHandle": "t-top",
+      "animated": false,
+      "type": "smoothstep",
+      "pathOptions": {
+        "offset": 62,
+        "borderRadius": 15
+      },
+      "style": {
+        "stroke": "#4b5563",
+        "strokeWidth": 2
+      }
+    },
+    {
+      "id": "e-arquitetura-e-organizacao-de-computadores-sistemas-digitais-e-circuitos-combinacionais",
+      "source": "arquitetura-e-organizacao-de-computadores",
+      "target": "sistemas-digitais-e-circuitos-combinacionais",
+      "sourceHandle": "s-bottom",
+      "targetHandle": "t-top",
+      "animated": false,
+      "type": "smoothstep",
+      "pathOptions": {
+        "offset": 62,
+        "borderRadius": 15
+      },
+      "style": {
+        "stroke": "#4b5563",
+        "strokeWidth": 2
+      }
+    },
+    {
+      "id": "e-programacao-web-banco-de-dados-i",
+      "source": "programacao-web",
+      "target": "banco-de-dados-i",
+      "sourceHandle": "s-right",
+      "targetHandle": "t-left",
+      "animated": false,
+      "type": "smoothstep",
+      "pathOptions": {
+        "offset": 62,
+        "borderRadius": 15
+      },
+      "style": {
+        "stroke": "#4b5563",
+        "strokeWidth": 2
+      }
+    },
+    {
+      "id": "e-sistemas-operacionais-arquitetura-e-organizacao-de-computadores",
+      "source": "sistemas-operacionais",
+      "target": "arquitetura-e-organizacao-de-computadores",
+      "sourceHandle": "s-bottom",
+      "targetHandle": "t-top",
+      "animated": false,
+      "type": "smoothstep",
+      "pathOptions": {
+        "offset": 62,
+        "borderRadius": 15
+      },
+      "style": {
+        "stroke": "#4b5563",
+        "strokeWidth": 2
+      }
+    },
+    {
+      "id": "e-redes-de-computadores-i-sistemas-operacionais",
+      "source": "redes-de-computadores-i",
+      "target": "sistemas-operacionais",
+      "sourceHandle": "s-bottom",
+      "targetHandle": "t-top",
+      "animated": false,
+      "type": "smoothstep",
+      "pathOptions": {
+        "offset": 62,
+        "borderRadius": 15
+      },
+      "style": {
+        "stroke": "#4b5563",
+        "strokeWidth": 2
+      }
+    },
+    {
+      "id": "e-sistemas-distribuidos-redes-de-computadores-i",
+      "source": "sistemas-distribuidos",
+      "target": "redes-de-computadores-i",
+      "sourceHandle": "s-bottom",
+      "targetHandle": "t-top",
+      "animated": false,
+      "type": "smoothstep",
+      "pathOptions": {
+        "offset": 62,
+        "borderRadius": 15
+      },
+      "style": {
+        "stroke": "#4b5563",
+        "strokeWidth": 2
+      }
+    },
+    {
+      "id": "e-inteligencia-artificial-projeto-e-analise-de-algoritmos",
+      "source": "inteligencia-artificial",
+      "target": "projeto-e-analise-de-algoritmos",
+      "sourceHandle": "s-bottom",
+      "targetHandle": "t-top",
+      "animated": false,
+      "type": "smoothstep",
+      "pathOptions": {
+        "offset": 62,
+        "borderRadius": 15
+      },
+      "style": {
+        "stroke": "#4b5563",
+        "strokeWidth": 2
+      }
+    },
+    {
+      "id": "e-empreendedorismo-gestao-de-projetos",
+      "source": "empreendedorismo",
+      "target": "gestao-de-projetos",
+      "sourceHandle": "s-bottom",
+      "targetHandle": "t-top",
+      "animated": false,
+      "type": "smoothstep",
+      "pathOptions": {
+        "offset": 62,
+        "borderRadius": 15
+      },
+      "style": {
+        "stroke": "#4b5563",
+        "strokeWidth": 2
+      }
+    },
+    {
+      "id": "e-trabalho-de-conclusao-de-curso-ii-trabalho-de-conclusao-de-curso-i",
+      "source": "trabalho-de-conclusao-de-curso-ii",
+      "target": "trabalho-de-conclusao-de-curso-i",
+      "sourceHandle": "s-bottom",
+      "targetHandle": "t-top",
+      "animated": false,
+      "type": "smoothstep",
+      "pathOptions": {
+        "offset": 62,
+        "borderRadius": 15
+      },
+      "style": {
+        "stroke": "#4b5563",
+        "strokeWidth": 2
+      }
+    },
+    {
+      "source": "probabilidade-e-estatistica",
+      "sourceHandle": "s-bottom",
+      "target": "calculo-diferencial-e-integral-i",
+      "targetHandle": "t-top",
+      "type": "smoothstep",
+      "style": {
+        "stroke": "#4b5563",
+        "strokeWidth": 2
+      },
+      "id": "xy-edge__probabilidade-e-estatisticas-bottom-calculo-diferencial-e-integral-it-top"
+    },
+    {
+      "source": "metodos-e-tecnicas-de-pesquisa",
+      "sourceHandle": "s-top",
+      "target": "trabalho-de-conclusao-de-curso-i",
+      "targetHandle": "t-bottom",
+      "type": "smoothstep",
+      "style": {
+        "stroke": "#4b5563",
+        "strokeWidth": 2
+      },
+      "id": "xy-edge__metodos-e-tecnicas-de-pesquisas-top-trabalho-de-conclusao-de-curso-it-bottom"
+    },
+    {
+      "source": "sistemas-de-apoio-a-decisao",
+      "sourceHandle": "s-bottom",
+      "target": "banco-de-dados-i",
+      "targetHandle": "t-top",
+      "type": "smoothstep",
+      "style": {
+        "stroke": "#4b5563",
+        "strokeWidth": 2
+      },
+      "id": "xy-edge__sistemas-de-apoio-a-decisaos-bottom-banco-de-dados-it-top"
+    },
+    {
+      "source": "interface-humano-computador",
+      "sourceHandle": "s-bottom",
+      "target": "programacao-web",
+      "targetHandle": "t-top",
+      "type": "smoothstep",
+      "style": {
+        "stroke": "#4b5563",
+        "strokeWidth": 2
+      },
+      "id": "xy-edge__interface-humano-computadors-bottom-programacao-webt-top"
+    },
+    {
+      "source": "projeto-e-analise-de-algoritmos",
+      "sourceHandle": "s-bottom",
+      "target": "algoritmos-e-estrutura-de-dados-ii",
+      "targetHandle": "t-top",
+      "type": "smoothstep",
+      "style": {
+        "stroke": "#4b5563",
+        "strokeWidth": 2
+      },
+      "id": "xy-edge__projeto-e-analise-de-algoritmoss-bottom-algoritmos-e-estrutura-de-dados-iit-top"
+    },
+    {
+      "source": "introducao-a-programacao",
+      "sourceHandle": "s-right",
+      "target": "programacao-orientada-a-objetos-i",
+      "targetHandle": "t-bottom",
+      "type": "smoothstep",
+      "style": {
+        "stroke": "#4b5563",
+        "strokeWidth": 2
+      },
+      "id": "xy-edge__introducao-a-programacaos-right-programacao-orientada-a-objetos-it-bottom"
+    },
+    {
+      "source": "programacao-orientada-a-objetos-i",
+      "sourceHandle": "s-right",
+      "target": "programacao-orientada-a-objetos-ii",
+      "targetHandle": "t-bottom",
+      "type": "smoothstep",
+      "style": {
+        "stroke": "#4b5563",
+        "strokeWidth": 2
+      },
+      "id": "xy-edge__programacao-orientada-a-objetos-is-right-programacao-orientada-a-objetos-iit-bottom"
+    },
+    {
+      "source": "programacao-orientada-a-objetos-i",
+      "sourceHandle": "s-top",
+      "target": "engenharia-de-software-i",
+      "targetHandle": "t-bottom",
+      "type": "smoothstep",
+      "style": {
+        "stroke": "#4b5563",
+        "strokeWidth": 2
+      },
+      "id": "xy-edge__programacao-orientada-a-objetos-is-top-engenharia-de-software-it-bottom"
+    },
+    {
+      "source": "engenharia-de-software-ii",
+      "sourceHandle": "s-bottom",
+      "target": "engenharia-de-software-i",
+      "targetHandle": "t-left",
+      "type": "smoothstep",
+      "style": {
+        "stroke": "#4b5563",
+        "strokeWidth": 2
+      },
+      "id": "xy-edge__engenharia-de-software-iis-bottom-engenharia-de-software-it-left"
+    },
+    {
+      "source": "programacao-para-dispositivos-moveis",
+      "sourceHandle": "s-bottom",
+      "target": "programacao-orientada-a-objetos-ii",
+      "targetHandle": "t-top",
+      "type": "smoothstep",
+      "style": {
+        "stroke": "#4b5563",
+        "strokeWidth": 2
+      },
+      "id": "xy-edge__programacao-para-dispositivos-moveiss-bottom-programacao-orientada-a-objetos-iit-top"
+    },
+    {
+      "source": "gestao-de-projetos",
+      "sourceHandle": "s-bottom",
+      "target": "engenharia-de-software-ii",
+      "targetHandle": "t-left",
+      "type": "smoothstep",
+      "style": {
+        "stroke": "#4b5563",
+        "strokeWidth": 2
+      },
+      "id": "xy-edge__gestao-de-projetoss-bottom-engenharia-de-software-iit-left"
+    },
+    {
+      "source": "qualidade-de-software",
+      "sourceHandle": "s-bottom",
+      "target": "engenharia-de-software-ii",
+      "targetHandle": "t-top",
+      "type": "smoothstep",
+      "style": {
+        "stroke": "#4b5563",
+        "strokeWidth": 2
+      },
+      "id": "xy-edge__qualidade-de-softwares-bottom-engenharia-de-software-iit-top"
+    }
+  ]
+}
