@@ -6,7 +6,7 @@ Este documento serve como um checklist para a implementação de boas práticas 
   - Alterar `<html lang="en">` para `<html lang="pt-BR">` no `layout.tsx`.
   - Restaurar visibilidade de foco (focus outline) no `SkillMap.tsx` para permitir navegação por teclado de forma acessível.
 
-- [ ] **Task 2: SEO e Open Graph (Compartilhamento)**
+- [x] **Task 2: SEO e Open Graph (Compartilhamento)**
   - Atualizar o `metadata` em `layout.tsx` para incluir tags OpenGraph (título, descrição, imagem) e Twitter Cards.
   - (Opcional do usuário) Adicionar uma imagem `og-image.jpg` na pasta `public`.
 
