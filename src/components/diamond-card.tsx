@@ -105,6 +105,16 @@ export function DiamondCard({
           className
         )}
         onClick={toggleNeon}
+        role={interactive ? "button" : "region"}
+        aria-pressed={interactive ? isNeonActive : undefined}
+        aria-label={`Disciplina ${title || "Desconhecida"}. Status: ${isNeonActive ? "Concluída" : "Pendente"}.`}
+        tabIndex={interactive ? 0 : undefined}
+        onKeyDown={(e) => {
+          if (interactive && (e.key === "Enter" || e.key === " ")) {
+            e.preventDefault();
+            toggleNeon();
+          }
+        }}
       >
         {/* SVG Background Layer for Perfect Rounded Corners */}
         <svg

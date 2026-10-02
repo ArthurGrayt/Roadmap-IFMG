@@ -32,5 +32,5 @@ Este documento serve como um checklist para a implementação de boas práticas 
   - Criar testes unitários para componentes chave (ex: `DiamondCard.tsx`).
   - Configurar um teste E2E básico usando Cypress ou Playwright.
 
-- [ ] **Task 8: Acessibilidade Avançada (A11y)**
+- [x] **Task 8: Acessibilidade Avançada (A11y)**
   - Adicionar `aria-label` e `aria-pressed` nos cartões e botões para leitores de tela.

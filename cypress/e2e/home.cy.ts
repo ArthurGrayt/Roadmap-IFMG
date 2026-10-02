@@ -1,3 +1,5 @@
+/// <reference types="cypress" />
+
 describe('Roadmap IFMG Home Page', () => {
   it('carrega a página inicial e exibe o mapa corretamente', () => {
     // Visita a aplicação rodando localmente
