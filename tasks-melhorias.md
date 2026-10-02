@@ -19,7 +19,7 @@ Este documento serve como um checklist para a implementação de boas práticas 
   - Criar o arquivo de configuração `.prettierrc`.
   - Adicionar o script `"format": "prettier --write ."` no `package.json`.
 
-- [ ] **Task 5: CI/CD com GitHub Actions**
+- [x] **Task 5: CI/CD com GitHub Actions**
   - Criar a pasta `.github/workflows`.
   - Adicionar um workflow `main.yml` para rodar linting e build a cada push ou Pull Request na branch principal.
 
