@@ -5,7 +5,8 @@ export type SkillLevel = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8;
 export type SkillCategory = "obrigatoria" | "optativa" | "expansao";
 
 // Define as cores temáticas de cada nível
-export type LevelColor = "green" | "blue" | "purple" | "orange" | "yellow" | "orange2" | "red" | "gold";
+export type LevelColor =
+  "green" | "blue" | "purple" | "orange" | "yellow" | "orange2" | "red" | "gold";
 
 // Define o status atual de progresso de uma skill
 export type SkillStatus = "locked" | "available" | "in_progress" | "completed";
@@ -147,7 +148,7 @@ export const SKILLS: Skill[] = [
     // Pertence ao 1º Período
     period: "1º Período",
     // Descrição para o card
-    notes: "Fundamentos de ética profissional."
+    notes: "Fundamentos de ética profissional.",
   },
   {
     // Define o ID único
@@ -171,7 +172,7 @@ export const SKILLS: Skill[] = [
     // Pertence ao 1º Período
     period: "1º Período",
     // Descrição para o card
-    notes: "Lógica e algoritmos básicos."
+    notes: "Lógica e algoritmos básicos.",
   },
   {
     // Define o ID único
@@ -195,7 +196,7 @@ export const SKILLS: Skill[] = [
     // Pertence ao 1º Período
     period: "1º Período",
     // Descrição para o card
-    notes: "Conceitos iniciais de SI."
+    notes: "Conceitos iniciais de SI.",
   },
   {
     // Define o ID único
@@ -219,7 +220,7 @@ export const SKILLS: Skill[] = [
     // Pertence ao 1º Período
     period: "1º Período",
     // Descrição para o card
-    notes: "Leitura e produção de textos."
+    notes: "Leitura e produção de textos.",
   },
   {
     // Define o ID único
@@ -243,7 +244,7 @@ export const SKILLS: Skill[] = [
     // Pertence ao 1º Período
     period: "1º Período",
     // Descrição para o card
-    notes: "Matemática básica."
+    notes: "Matemática básica.",
   },
   {
     // Define o ID único
@@ -267,7 +268,7 @@ export const SKILLS: Skill[] = [
     // Pertence ao 1º Período
     period: "1º Período",
     // Descrição para o card
-    notes: "Gestão e organizações."
+    notes: "Gestão e organizações.",
   },
 
   // ==========================
@@ -295,7 +296,7 @@ export const SKILLS: Skill[] = [
     // Pertence ao 2º Período
     period: "2º Período",
     // Descrição para o card
-    notes: "Estruturas lineares."
+    notes: "Estruturas lineares.",
   },
   {
     // Define o ID único
@@ -319,7 +320,7 @@ export const SKILLS: Skill[] = [
     // Pertence ao 2º Período
     period: "2º Período",
     // Descrição para o card
-    notes: "Derivadas e Integrais."
+    notes: "Derivadas e Integrais.",
   },
   {
     // Define o ID único
@@ -343,7 +344,7 @@ export const SKILLS: Skill[] = [
     // Pertence ao 2º Período
     period: "2º Período",
     // Descrição para o card
-    notes: "Inglês técnico."
+    notes: "Inglês técnico.",
   },
   {
     // Define o ID único
@@ -367,7 +368,7 @@ export const SKILLS: Skill[] = [
     // Pertence ao 2º Período
     period: "2º Período",
     // Descrição para o card
-    notes: "Metodologia científica."
+    notes: "Metodologia científica.",
   },
   {
     // Define o ID único
@@ -391,7 +392,7 @@ export const SKILLS: Skill[] = [
     // Pertence ao 2º Período
     period: "2º Período",
     // Descrição para o card
-    notes: "Classes e objetos."
+    notes: "Classes e objetos.",
   },
   {
     // Define o ID único
@@ -415,7 +416,7 @@ export const SKILLS: Skill[] = [
     // Pertence ao 2º Período
     period: "2º Período",
     // Descrição para o card
-    notes: "Eletrônica digital."
+    notes: "Eletrônica digital.",
   },
 
   // ==========================
@@ -443,7 +444,7 @@ export const SKILLS: Skill[] = [
     // Pertence ao 3º Período
     period: "3º Período",
     // Descrição para o card
-    notes: "Árvores e grafos."
+    notes: "Árvores e grafos.",
   },
   {
     // Define o ID único
@@ -467,7 +468,7 @@ export const SKILLS: Skill[] = [
     // Pertence ao 3º Período
     period: "3º Período",
     // Descrição para o card
-    notes: "Hardware de sistemas."
+    notes: "Hardware de sistemas.",
   },
   {
     // Define o ID único
@@ -491,7 +492,7 @@ export const SKILLS: Skill[] = [
     // Pertence ao 3º Período
     period: "3º Período",
     // Descrição para o card
-    notes: "Modelagem e SQL."
+    notes: "Modelagem e SQL.",
   },
   {
     // Define o ID único
@@ -515,7 +516,7 @@ export const SKILLS: Skill[] = [
     // Pertence ao 3º Período
     period: "3º Período",
     // Descrição para o card
-    notes: "Práticas contábeis."
+    notes: "Práticas contábeis.",
   },
   {
     // Define o ID único
@@ -539,7 +540,7 @@ export const SKILLS: Skill[] = [
     // Pertence ao 3º Período
     period: "3º Período",
     // Descrição para o card
-    notes: "Requisitos e modelagem."
+    notes: "Requisitos e modelagem.",
   },
 
   // ==========================
@@ -567,7 +568,7 @@ export const SKILLS: Skill[] = [
     // Pertence ao 4º Período
     period: "4º Período",
     // Descrição para o card
-    notes: "Vetores e matrizes."
+    notes: "Vetores e matrizes.",
   },
   {
     // Define o ID único
@@ -591,7 +592,7 @@ export const SKILLS: Skill[] = [
     // Pertence ao 4º Período
     period: "4º Período",
     // Descrição para o card
-    notes: "Lógica e conjuntos."
+    notes: "Lógica e conjuntos.",
   },
   {
     // Define o ID único
@@ -615,7 +616,7 @@ export const SKILLS: Skill[] = [
     // Pertence ao 4º Período
     period: "4º Período",
     // Descrição para o card
-    notes: "Design Patterns."
+    notes: "Design Patterns.",
   },
   {
     // Define o ID único
@@ -639,7 +640,7 @@ export const SKILLS: Skill[] = [
     // Pertence ao 4º Período
     period: "4º Período",
     // Descrição para o card
-    notes: "Desenvolvimento Web."
+    notes: "Desenvolvimento Web.",
   },
   {
     // Define o ID único
@@ -663,7 +664,7 @@ export const SKILLS: Skill[] = [
     // Pertence ao 4º Período
     period: "4º Período",
     // Descrição para o card
-    notes: "Kernel e processos."
+    notes: "Kernel e processos.",
   },
 
   // ==========================
@@ -691,7 +692,7 @@ export const SKILLS: Skill[] = [
     // Pertence ao 5º Período
     period: "5º Período",
     // Descrição para o card
-    notes: "Gestão e qualidade."
+    notes: "Gestão e qualidade.",
   },
   {
     // Define o ID único
@@ -715,7 +716,7 @@ export const SKILLS: Skill[] = [
     // Pertence ao 5º Período
     period: "5º Período",
     // Descrição para o card
-    notes: "Gestão de TI corporativa."
+    notes: "Gestão de TI corporativa.",
   },
   {
     // Define o ID único
@@ -739,7 +740,7 @@ export const SKILLS: Skill[] = [
     // Pertence ao 5º Período
     period: "5º Período",
     // Descrição para o card
-    notes: "Análise de dados."
+    notes: "Análise de dados.",
   },
   {
     // Define o ID único
@@ -763,7 +764,7 @@ export const SKILLS: Skill[] = [
     // Pertence ao 5º Período
     period: "5º Período",
     // Descrição para o card
-    notes: "Protocolos e infra."
+    notes: "Protocolos e infra.",
   },
   {
     // Define o ID único
@@ -787,7 +788,7 @@ export const SKILLS: Skill[] = [
     // Pertence ao 5º Período
     period: "5º Período",
     // Descrição para o card
-    notes: "Escolha uma expansão."
+    notes: "Escolha uma expansão.",
   },
 
   // ==========================
@@ -815,7 +816,7 @@ export const SKILLS: Skill[] = [
     // Pertence ao 6º Período
     period: "6º Período",
     // Descrição para o card
-    notes: "Desenvolvimento Mobile."
+    notes: "Desenvolvimento Mobile.",
   },
   {
     // Define o ID único
@@ -839,7 +840,7 @@ export const SKILLS: Skill[] = [
     // Pertence ao 6º Período
     period: "6º Período",
     // Descrição para o card
-    notes: "Complexidade algorítmica."
+    notes: "Complexidade algorítmica.",
   },
   {
     // Define o ID único
@@ -863,7 +864,7 @@ export const SKILLS: Skill[] = [
     // Pertence ao 6º Período
     period: "6º Período",
     // Descrição para o card
-    notes: "Business Intelligence."
+    notes: "Business Intelligence.",
   },
   {
     // Define o ID único
@@ -887,7 +888,7 @@ export const SKILLS: Skill[] = [
     // Pertence ao 6º Período
     period: "6º Período",
     // Descrição para o card
-    notes: "Arquiteturas distribuídas."
+    notes: "Arquiteturas distribuídas.",
   },
   {
     // Define o ID único
@@ -911,7 +912,7 @@ export const SKILLS: Skill[] = [
     // Pertence ao 6º Período
     period: "6º Período",
     // Descrição para o card
-    notes: "Escolha uma expansão."
+    notes: "Escolha uma expansão.",
   },
 
   // ==========================
@@ -939,7 +940,7 @@ export const SKILLS: Skill[] = [
     // Pertence ao 7º Período
     period: "7º Período",
     // Descrição para o card
-    notes: "Metodologias ágeis e PMBOK."
+    notes: "Metodologias ágeis e PMBOK.",
   },
   {
     // Define o ID único
@@ -963,7 +964,7 @@ export const SKILLS: Skill[] = [
     // Pertence ao 7º Período
     period: "7º Período",
     // Descrição para o card
-    notes: "Machine Learning e IA."
+    notes: "Machine Learning e IA.",
   },
   {
     // Define o ID único
@@ -987,7 +988,7 @@ export const SKILLS: Skill[] = [
     // Pertence ao 7º Período
     period: "7º Período",
     // Descrição para o card
-    notes: "UX e Usabilidade."
+    notes: "UX e Usabilidade.",
   },
   {
     // Define o ID único
@@ -1011,7 +1012,7 @@ export const SKILLS: Skill[] = [
     // Pertence ao 7º Período
     period: "7º Período",
     // Descrição para o card
-    notes: "Projeto de Pesquisa."
+    notes: "Projeto de Pesquisa.",
   },
   {
     // Define o ID único
@@ -1035,7 +1036,7 @@ export const SKILLS: Skill[] = [
     // Pertence ao 7º Período
     period: "7º Período",
     // Descrição para o card
-    notes: "Escolha uma expansão."
+    notes: "Escolha uma expansão.",
   },
 
   // ==========================
@@ -1063,7 +1064,7 @@ export const SKILLS: Skill[] = [
     // Pertence ao 8º Período
     period: "8º Período",
     // Descrição para o card
-    notes: "Inovação e negócios."
+    notes: "Inovação e negócios.",
   },
   {
     // Define o ID único
@@ -1087,7 +1088,7 @@ export const SKILLS: Skill[] = [
     // Pertence ao 8º Período
     period: "8º Período",
     // Descrição para o card
-    notes: "Testes e garantias."
+    notes: "Testes e garantias.",
   },
   {
     // Define o ID único
@@ -1111,7 +1112,7 @@ export const SKILLS: Skill[] = [
     // Pertence ao 8º Período
     period: "8º Período",
     // Descrição para o card
-    notes: "Defesa e publicação."
+    notes: "Defesa e publicação.",
   },
   {
     // Define o ID único
@@ -1135,8 +1136,8 @@ export const SKILLS: Skill[] = [
     // Pertence ao 8º Período
     period: "8º Período",
     // Descrição para o card
-    notes: "Escolha uma expansão."
-  }
+    notes: "Escolha uma expansão.",
+  },
 ];
 
 // Expansões omitidas para economizar espaço por enquanto, mas podem ser adicionadas depois da mesma forma

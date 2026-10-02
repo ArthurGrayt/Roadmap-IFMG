@@ -39,7 +39,7 @@ export function RoleModal({ role, positionTop, onClose }: RoleModalProps) {
   // Itera pelas categorias de carreiras cadastradas
   for (const category of CAREER_DATA) {
     // Procura a profissão correspondente
-    const foundRole = category.roles.find(r => r.name === role);
+    const foundRole = category.roles.find((r) => r.name === role);
     // Se encontrou a profissão
     if (foundRole) {
       // Define a lista de IDs das skills exigidas
@@ -58,7 +58,7 @@ export function RoleModal({ role, positionTop, onClose }: RoleModalProps) {
   }
 
   // Mapeia os IDs para os objetos reais de Skill definidos em ALL_SKILLS
-  const skills: Skill[] = skillIds.map(id => ALL_SKILLS[id]).filter(Boolean);
+  const skills: Skill[] = skillIds.map((id) => ALL_SKILLS[id]).filter(Boolean);
 
   // Estado que gerencia o modo atual de visualização: grid (padrão) ou list (lista expandida)
   const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
@@ -70,7 +70,7 @@ export function RoleModal({ role, positionTop, onClose }: RoleModalProps) {
   const activeRole = useSkillStore((state) => state.activeRole);
   const setActiveRole = useSkillStore((state) => state.setActiveRole);
   const setCareerTrail = useSkillStore((state) => state.setCareerTrail);
-  
+
   const isCareerSelected = activeRole === role;
 
   // Efeito para resetar a seleção caso o modal feche ou mude de profissão
@@ -160,7 +160,6 @@ export function RoleModal({ role, positionTop, onClose }: RoleModalProps) {
                 <h3 className="text-[15px] font-bold text-white/95 truncate tracking-wide">
                   {role}
                 </h3>
-              
               </div>
 
               {/* Container para o tooltip de ajuda e botões de alternância */}
@@ -203,16 +202,12 @@ export function RoleModal({ role, positionTop, onClose }: RoleModalProps) {
             <div className="w-full h-px bg-white/10 mb-4 shrink-0" />
 
             {/* Componente separado que gerencia a exibição e rolagem das skills baseada no viewMode */}
-            <RoleSkillsView
-              skills={skills}
-              viewMode={viewMode}
-              onSkillClick={setSelectedSkill}
-            />
+            <RoleSkillsView skills={skills} viewMode={viewMode} onSkillClick={setSelectedSkill} />
 
             {/* Contêiner de ações fixado no canto inferior direito do modal */}
             <div className="mt-auto pt-3 flex items-center justify-end gap-2 shrink-0">
               {/* Botão 'Ver detalhes' que abre a tela RoleDetailView com os detalhes da carreira */}
-              <button 
+              <button
                 onClick={() => setShowRoleDetail(true)}
                 className="px-2.5 py-1 text-[11px] font-semibold text-zinc-300 hover:text-white bg-white/5 hover:bg-white/10 border border-white/10 rounded-lg transition-colors cursor-pointer shadow-sm"
               >
@@ -220,11 +215,11 @@ export function RoleModal({ role, positionTop, onClose }: RoleModalProps) {
               </button>
 
               {/* Botão de destaque 'Quero aprender essa profissão' com alternância de estado */}
-              <button 
+              <button
                 onClick={toggleCareerSelection}
                 className={cn(
                   "px-3 py-1 text-[11px] font-bold border rounded-lg transition-all cursor-pointer active:scale-95 ",
-                  isCareerSelected 
+                  isCareerSelected
                     ? "bg-yellow-400 text-white border-yellow-400/40 "
                     : "text-zinc-950 bg-gradient-to-r from-emerald-400 to-teal-400  border-emerald-400/40 "
                 )}

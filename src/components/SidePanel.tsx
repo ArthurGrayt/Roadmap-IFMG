@@ -22,11 +22,11 @@ export function SidePanel() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
   // Estado para armazenar o papel ativo selecionado por clique e sua posição vertical
   const [activeRole, setActiveRole] = useState<{ name: string; top: number } | null>(null);
-  
+
   // Trilha ativa selecionada no estado global
   const globalActiveRole = useSkillStore((state) => state.activeRole);
   const acquiredSkills = useSkillStore((state) => state.acquiredSkills);
-  
+
   // Referência ao container que agrupa o painel e o modal para detectar cliques fora
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -49,7 +49,7 @@ export function SidePanel() {
 
     // Adiciona o listener de 'mousedown' ao documento global na fase de captura
     document.addEventListener("mousedown", handleClickOutside, true);
-    
+
     // Função de limpeza (cleanup) executada ao desmontar o componente
     return () => {
       // Remove o listener para evitar vazamentos de memória (memory leaks)
@@ -97,7 +97,9 @@ export function SidePanel() {
                   // Classes de estilo dinâmicas dependendo se está aberto ou fechado
                   className={cn(
                     "flex items-center justify-between w-full p-3 rounded-xl transition-all duration-300 cursor-pointer",
-                    isOpen ? "bg-[#28313A] text-white" : "bg-transparent text-zinc-300 hover:bg-[#28313A]/50"
+                    isOpen
+                      ? "bg-[#28313A] text-white"
+                      : "bg-transparent text-zinc-300 hover:bg-[#28313A]/50"
                   )}
                 >
                   {/* Nome da categoria */}
@@ -115,7 +117,7 @@ export function SidePanel() {
                     <ChevronDown className="w-4 h-4 opacity-70" />
                   </motion.div>
                 </button>
-                
+
                 {/* Animação de presença para abrir/fechar suavemente */}
                 <AnimatePresence initial={false}>
                   {/* Exibe os papéis apenas se a categoria estiver aberta */}
@@ -141,11 +143,14 @@ export function SidePanel() {
                           // Verifica se este papel é o que está ativo no modal
                           const isActive = activeRole?.name === roleName;
                           // Verifica se o usuário já completou esta profissão
-                          const isCompleted = roleObj.skills && roleObj.skills.length > 0 && roleObj.skills.every((skillId: string) => acquiredSkills.has(skillId));
-                          
+                          const isCompleted =
+                            roleObj.skills &&
+                            roleObj.skills.length > 0 &&
+                            roleObj.skills.every((skillId: string) => acquiredSkills.has(skillId));
+
                           return (
                             // Item da lista acionável via clique
-                            <li 
+                            <li
                               key={roleName}
                               // Evento de clique para ativar/desativar o modal
                               onClick={(e) => {
@@ -161,14 +166,18 @@ export function SidePanel() {
                               // Classes Tailwind: destaque fixo se estiver ativo ou efeito ao passar o mouse
                               className={cn(
                                 "flex items-start justify-between w-full p-2 rounded-xl text-sm transition-all duration-200 group cursor-pointer",
-                                isActive ? "bg-[#28313A]/60 text-green-300" : "text-zinc-400 hover:text-green-300 hover:bg-[#28313A]/40"
+                                isActive
+                                  ? "bg-[#28313A]/60 text-green-300"
+                                  : "text-zinc-400 hover:text-green-300 hover:bg-[#28313A]/40"
                               )}
                             >
                               {/* Nome da função alinhada à esquerda com ícone de alvo se for a trilha selecionada */}
-                              <span className={cn(
-                                "transition-transform duration-300 pr-2 leading-snug flex items-center gap-2",
-                                isActive ? "translate-x-1" : "group-hover:translate-x-1"
-                              )}>
+                              <span
+                                className={cn(
+                                  "transition-transform duration-300 pr-2 leading-snug flex items-center gap-2",
+                                  isActive ? "translate-x-1" : "group-hover:translate-x-1"
+                                )}
+                              >
                                 {roleName}
                                 {isCompleted ? (
                                   <Award className="w-4 h-4 shrink-0 text-emerald-400 drop-shadow-[0_0_8px_rgba(52,211,153,0.6)]" />
@@ -177,10 +186,12 @@ export function SidePanel() {
                                 ) : null}
                               </span>
                               {/* Ícone de seta no canto, visível se ativo ou hover */}
-                              <ChevronRight className={cn(
-                                "w-4 h-4 shrink-0 mt-0.5 transition-all duration-300 text-green-400",
-                                isActive ? "opacity-100" : "opacity-0 group-hover:opacity-100"
-                              )} />
+                              <ChevronRight
+                                className={cn(
+                                  "w-4 h-4 shrink-0 mt-0.5 transition-all duration-300 text-green-400",
+                                  isActive ? "opacity-100" : "opacity-0 group-hover:opacity-100"
+                                )}
+                              />
                             </li>
                           );
                         })}
@@ -198,9 +209,9 @@ export function SidePanel() {
       <AnimatePresence>
         {activeRole && (
           // Renderiza o modal da carreira ativa passando o callback para fechar
-          <RoleModal 
-            role={activeRole.name} 
-            positionTop={activeRole.top} 
+          <RoleModal
+            role={activeRole.name}
+            positionTop={activeRole.top}
             onClose={() => setActiveRole(null)} // Fecha o modal ao acionar ação de busca ou fechamento
           />
         )}

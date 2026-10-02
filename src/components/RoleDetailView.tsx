@@ -6,10 +6,25 @@ import React from "react";
 // Importa o Framer Motion para animações fluidas de transição
 import { motion } from "framer-motion";
 // Importa ícones temáticos da biblioteca Lucide React
-import { 
-  ArrowLeft, X, Sparkles, CheckCircle2, Layers, Rocket, 
-  Code, Database, Layout, Smartphone, Server, Brain, 
-  ShieldCheck, Settings, Target, Lightbulb, Gamepad2, Briefcase
+import {
+  ArrowLeft,
+  X,
+  Sparkles,
+  CheckCircle2,
+  Layers,
+  Rocket,
+  Code,
+  Database,
+  Layout,
+  Smartphone,
+  Server,
+  Brain,
+  ShieldCheck,
+  Settings,
+  Target,
+  Lightbulb,
+  Gamepad2,
+  Briefcase,
 } from "lucide-react";
 // Importa a tipagem de Skill
 import { Skill } from "@/data/rolesData";
@@ -33,152 +48,169 @@ interface RoleDetailViewProps {
 }
 
 // Mapa de informações profissionais detalhadas para cada carreira
-const ROLE_DEFINITIONS: Record<string, {
-  description: string;
-  responsibilities: string[];
-  icon: React.ElementType;
-  badge: string;
-}> = {
+const ROLE_DEFINITIONS: Record<
+  string,
+  {
+    description: string;
+    responsibilities: string[];
+    icon: React.ElementType;
+    badge: string;
+  }
+> = {
   "Desenvolvedor Front-end": {
-    description: "Cria as interfaces visuais, telas responsivas e experiências interativas com as quais os usuários navegam diretamente, unindo código moderno, acessibilidade e design.",
+    description:
+      "Cria as interfaces visuais, telas responsivas e experiências interativas com as quais os usuários navegam diretamente, unindo código moderno, acessibilidade e design.",
     responsibilities: [
       "Desenvolvimento de telas reativas e fluidas",
       "Integração contínua com APIs e serviços back-end",
-      "Otimização de velocidade, acessibilidade e SEO"
+      "Otimização de velocidade, acessibilidade e SEO",
     ],
     icon: Layout,
-    badge: "Foco no Usuário"
+    badge: "Foco no Usuário",
   },
   "Desenvolvedor Back-end": {
-    description: "Projeta e desenvolve os motores lógicos dos sistemas: APIs, regras de negócios e bancos de dados, assegurando alto desempenho, integridade e segurança.",
+    description:
+      "Projeta e desenvolve os motores lógicos dos sistemas: APIs, regras de negócios e bancos de dados, assegurando alto desempenho, integridade e segurança.",
     responsibilities: [
       "Construção de APIs RESTful e microsserviços",
       "Modelagem e otimização de bancos de dados",
-      "Autenticação segura e proteção de dados críticos"
+      "Autenticação segura e proteção de dados críticos",
     ],
     icon: Server,
-    badge: "Lógica e Segurança"
+    badge: "Lógica e Segurança",
   },
   "Desenvolvedor Fullstack": {
-    description: "Domina tanto o desenvolvimento de interfaces (front-end) quanto os serviços de suporte e dados (back-end), tendo visão holística de todo o ciclo de software.",
+    description:
+      "Domina tanto o desenvolvimento de interfaces (front-end) quanto os serviços de suporte e dados (back-end), tendo visão holística de todo o ciclo de software.",
     responsibilities: [
       "Construção de sistemas completos do início ao fim",
       "Integração perfeita entre interface e banco de dados",
-      "Prototipagem ágil e implantação de soluções"
+      "Prototipagem ágil e implantação de soluções",
     ],
     icon: Code,
-    badge: "Visão Completa"
+    badge: "Visão Completa",
   },
   "Desenvolvedor Mobile": {
-    description: "Cria aplicativos para smartphones e tablets (Android e iOS), focando em navegação por toque fluida, baixo consumo de bateria e integração com recursos do aparelho.",
+    description:
+      "Cria aplicativos para smartphones e tablets (Android e iOS), focando em navegação por toque fluida, baixo consumo de bateria e integração com recursos do aparelho.",
     responsibilities: [
       "Desenvolvimento de apps nativos e multiplataforma",
       "Integração com sensores, câmeras e GPS",
-      "Publicação e manutenção nas lojas Google Play e App Store"
+      "Publicação e manutenção nas lojas Google Play e App Store",
     ],
     icon: Smartphone,
-    badge: "Ecossistema Mobile"
+    badge: "Ecossistema Mobile",
   },
   "Cientista / Analista de Dados": {
-    description: "Descobre correlações, padrões e respostas estratégicas em grandes volumes de dados para apoiar tomadas de decisão e antecipar tendências de mercado.",
+    description:
+      "Descobre correlações, padrões e respostas estratégicas em grandes volumes de dados para apoiar tomadas de decisão e antecipar tendências de mercado.",
     responsibilities: [
       "Análise exploratória e mineração de dados",
       "Construção de painéis e relatórios visuais inteligentes",
-      "Modelagem estatística preditiva para empresas"
+      "Modelagem estatística preditiva para empresas",
     ],
     icon: Target,
-    badge: "Tomada de Decisão"
+    badge: "Tomada de Decisão",
   },
   "Engenheiro de Dados": {
-    description: "Constrói pipelines escaláveis, data lakes e arquiteturas de fluxo contínuo de dados para alimentar plataformas analíticas e inteligências artificiais com segurança.",
+    description:
+      "Constrói pipelines escaláveis, data lakes e arquiteturas de fluxo contínuo de dados para alimentar plataformas analíticas e inteligências artificiais com segurança.",
     responsibilities: [
       "Estruturação de pipelines de dados em tempo real",
       "Gerenciamento de bancos SQL, NoSQL e Big Data",
-      "Garantia de consistência, qualidade e governança"
+      "Garantia de consistência, qualidade e governança",
     ],
     icon: Database,
-    badge: "Big Data e Infra"
+    badge: "Big Data e Infra",
   },
   "Especialista em Machine Learning": {
-    description: "Desenvolve e treina modelos matemáticos e redes neurais que aprendem com dados históricos para resolver desafios complexos de previsão e automação cognitiva.",
+    description:
+      "Desenvolve e treina modelos matemáticos e redes neurais que aprendem com dados históricos para resolver desafios complexos de previsão e automação cognitiva.",
     responsibilities: [
       "Treinamento e ajuste fino de algoritmos inteligentes",
       "Processamento de visão computacional e linguagem natural",
-      "Implantação e monitoramento de modelos em produção"
+      "Implantação e monitoramento de modelos em produção",
     ],
     icon: Brain,
-    badge: "Inteligência Artificial"
+    badge: "Inteligência Artificial",
   },
   "Arquiteto de Software": {
-    description: "Define a estrutura tecnológica, padrões de projeto e diretrizes de sistemas de alta complexidade, balanceando custo, escalabilidade e facilidade de manutenção.",
+    description:
+      "Define a estrutura tecnológica, padrões de projeto e diretrizes de sistemas de alta complexidade, balanceando custo, escalabilidade e facilidade de manutenção.",
     responsibilities: [
       "Planejamento de arquiteturas distribuídas e microsserviços",
       "Escolha estratégica de linguagens e tecnologias",
-      "Garantia de alta resiliência e disponibilidade de sistemas"
+      "Garantia de alta resiliência e disponibilidade de sistemas",
     ],
     icon: Settings,
-    badge: "Estratégia Técnica"
+    badge: "Estratégia Técnica",
   },
   "Analista de Qualidade (QA)": {
-    description: "Garante que o software funcione sem falhas e cumpra todos os requisitos de segurança e usabilidade por meio de testes automatizados e integração contínua.",
+    description:
+      "Garante que o software funcione sem falhas e cumpra todos os requisitos de segurança e usabilidade por meio de testes automatizados e integração contínua.",
     responsibilities: [
       "Criação e execução de testes automatizados de ponta a ponta",
       "Identificação precoce de vulnerabilidades e bugs",
-      "Garantia de confiabilidade e conformidade do produto"
+      "Garantia de confiabilidade e conformidade do produto",
     ],
     icon: ShieldCheck,
-    badge: "Qualidade de Software"
+    badge: "Qualidade de Software",
   },
   "SysAdmin / DevOps": {
-    description: "Automatiza a integração e entrega contínua (CI/CD), gerencia servidores e nuvens (Cloud) para assegurar que os sistemas estejam sempre no ar e operando rápido.",
+    description:
+      "Automatiza a integração e entrega contínua (CI/CD), gerencia servidores e nuvens (Cloud) para assegurar que os sistemas estejam sempre no ar e operando rápido.",
     responsibilities: [
       "Automação de deploys e esteiras de integração contínua",
       "Gerenciamento de infraestrutura em nuvem e containers",
-      "Monitoramento contínuo e mitigação rápida de incidentes"
+      "Monitoramento contínuo e mitigação rápida de incidentes",
     ],
     icon: Server,
-    badge: "Nuvem e Automação"
+    badge: "Nuvem e Automação",
   },
   "Product Manager (PM)": {
-    description: "Lidera a visão e estratégia de produtos digitais, alinhando as necessidades dos usuários aos objetivos do negócio e orientando as prioridades da equipe de desenvolvimento.",
+    description:
+      "Lidera a visão e estratégia de produtos digitais, alinhando as necessidades dos usuários aos objetivos do negócio e orientando as prioridades da equipe de desenvolvimento.",
     responsibilities: [
       "Mapeamento e priorização de novas funcionalidades",
       "Alinhamento entre clientes, executivos e desenvolvedores",
-      "Acompanhamento de métricas de engajamento e valor entregue"
+      "Acompanhamento de métricas de engajamento e valor entregue",
     ],
     icon: Sparkles,
-    badge: "Gestão de Produto"
+    badge: "Gestão de Produto",
   },
   "Gerente de Projetos": {
-    description: "Orquestra prazos, recursos e equipes multidisciplinares com metodologias ágeis para garantir que os projetos de tecnologia sejam entregues com qualidade e pontualidade.",
+    description:
+      "Orquestra prazos, recursos e equipes multidisciplinares com metodologias ágeis para garantir que os projetos de tecnologia sejam entregues com qualidade e pontualidade.",
     responsibilities: [
       "Planejamento e acompanhamento de cronogramas ágeis",
       "Facilitação de ritos diários e resolução de impedimentos",
-      "Comunicação clara de progresso com os clientes"
+      "Comunicação clara de progresso com os clientes",
     ],
     icon: Briefcase,
-    badge: "Liderança Ágil"
+    badge: "Liderança Ágil",
   },
   "Empreendedor de TI": {
-    description: "Transforma ideias inovadoras em startups escaláveis e produtos tecnológicos de sucesso, construindo modelos de negócio sustentáveis no mercado digital.",
+    description:
+      "Transforma ideias inovadoras em startups escaláveis e produtos tecnológicos de sucesso, construindo modelos de negócio sustentáveis no mercado digital.",
     responsibilities: [
       "Validação ágil de novos modelos de negócios e MVPs",
       "Gestão financeira, captação de parceiros e clientes",
-      "Liderança na criação de soluções tecnológicas inovadoras"
+      "Liderança na criação de soluções tecnológicas inovadoras",
     ],
     icon: Lightbulb,
-    badge: "Inovação e Startups"
+    badge: "Inovação e Startups",
   },
   "Desenvolvedor de Jogos": {
-    description: "Programa a física, jogabilidade, inteligência artificial e efeitos interativos de jogos digitais para computadores, consoles e smartphones.",
+    description:
+      "Programa a física, jogabilidade, inteligência artificial e efeitos interativos de jogos digitais para computadores, consoles e smartphones.",
     responsibilities: [
       "Desenvolvimento de mecânicas de jogo e loops de gameplay",
       "Programação de física interativa e IA para personagens",
-      "Otimização de consumo de memória e taxa de quadros (FPS)"
+      "Otimização de consumo de memória e taxa de quadros (FPS)",
     ],
     icon: Gamepad2,
-    badge: "Criação de Jogos"
-  }
+    badge: "Criação de Jogos",
+  },
 };
 
 // Componente para exibir os detalhes do que a profissão faz
@@ -188,18 +220,19 @@ export function RoleDetailView({
   skills,
   onBack,
   onClose,
-  onSelectRole
+  onSelectRole,
 }: RoleDetailViewProps) {
   // Recupera as informações detalhadas da carreira cadastrada ou aplica fallback informativo
   const details = ROLE_DEFINITIONS[role] || {
-    description: "Atua no ecossistema de tecnologia aplicando competências teóricas e práticas desenvolvidas ao longo das disciplinas da grade do IFMG.",
+    description:
+      "Atua no ecossistema de tecnologia aplicando competências teóricas e práticas desenvolvidas ao longo das disciplinas da grade do IFMG.",
     responsibilities: [
       "Desenvolvimento e sustentação de soluções digitais",
       "Aplicação de boas práticas de engenharia e código limpo",
-      "Resolução de problemas práticos com tecnologia"
+      "Resolução de problemas práticos com tecnologia",
     ],
     icon: Rocket,
-    badge: "Carreira em TI"
+    badge: "Carreira em TI",
   };
 
   // Ícone específico da carreira
@@ -215,7 +248,8 @@ export function RoleDetailView({
       transition={{ duration: 0.18, ease: "easeOut" }} // Transição rápida
       className="flex flex-col h-full w-full select-none"
       style={{
-        fontFamily: 'var(--font-geist-sans), system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif'
+        fontFamily:
+          'var(--font-geist-sans), system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
       }}
     >
       {/* Cabeçalho compacto com botão de voltar, título e fechar */}
@@ -230,7 +264,7 @@ export function RoleDetailView({
           >
             <ArrowLeft className="w-3 h-3" />
           </button>
-          
+
           {/* Título do cabeçalho */}
           <div>
             <span className="text-[9px] font-bold uppercase tracking-wider text-emerald-400 block leading-none">
@@ -259,10 +293,10 @@ export function RoleDetailView({
         {/* Hero Card com Ícone Luminoso da Carreira (44x44) */}
         <div className="relative my-1 shrink-0">
           {/* Brilho radial de fundo verde esmeralda */}
-          <div 
+          <div
             className="absolute inset-0 rounded-xl blur-lg opacity-50 pointer-events-none"
             style={{
-              background: 'radial-gradient(circle, rgba(52, 211, 153, 0.35) 0%, transparent 70%)'
+              background: "radial-gradient(circle, rgba(52, 211, 153, 0.35) 0%, transparent 70%)",
             }}
           />
 
@@ -276,7 +310,7 @@ export function RoleDetailView({
         <h2 className="text-[14.5px] font-extrabold text-white tracking-tight leading-snug px-1 mb-1.5 shrink-0">
           {role}
         </h2>
-        
+
         {/* Linha com badges temáticas da carreira com border-radius mínimo */}
         <div className="flex flex-wrap items-center justify-center gap-1.5 mb-2 shrink-0">
           {/* Badge da Área / Categoria com cantos quase retos (3px) */}
@@ -311,7 +345,10 @@ export function RoleDetailView({
             </span>
             <ul className="flex flex-col gap-1">
               {details.responsibilities.map((resp, idx) => (
-                <li key={idx} className="flex items-start gap-1.5 text-[10px] text-zinc-300 leading-tight">
+                <li
+                  key={idx}
+                  className="flex items-start gap-1.5 text-[10px] text-zinc-300 leading-tight"
+                >
                   <CheckCircle2 className="w-3 h-3 text-emerald-400 shrink-0 mt-0.5" />
                   <span>{resp}</span>
                 </li>

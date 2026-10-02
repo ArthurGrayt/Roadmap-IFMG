@@ -27,31 +27,35 @@ interface SkillDetailViewProps {
 // Componente para exibição compacta, refinada e perfeitamente ajustada ao tamanho fixo de 380x400
 export function SkillDetailView({ skill, onBack, onClose }: SkillDetailViewProps) {
   // Busca as configurações oficiais da matéria a partir do seu ID
-  const config = SKILLS.find(s => s.id === skill.id);
+  const config = SKILLS.find((s) => s.id === skill.id);
 
   // Determina o rótulo do período acadêmico
   const periodLabel = config?.period || (config?.level ? `${config.level}º Período` : "Geral");
   // Determina se a disciplina é obrigatória ou optativa
   const categoryLabel = config?.category === "optativa" ? "Optativa" : "Obrigatória";
-  
+
   // Utiliza a store para saber se a disciplina já foi adquirida
   const isAcquired = useSkillStore((state) => state.acquiredSkills.has(skill.id));
 
   // Identifica a lista de pré-requisitos lógicos ou oficiais
-  const prereqIds = (config?.logicalPrerequisites && config.logicalPrerequisites.length > 0)
-    ? config.logicalPrerequisites
-    : (config?.officialPrerequisites || []);
+  const prereqIds =
+    config?.logicalPrerequisites && config.logicalPrerequisites.length > 0
+      ? config.logicalPrerequisites
+      : config?.officialPrerequisites || [];
 
   // Mapeia os IDs dos pré-requisitos para os seus nomes legíveis
-  const prereqNames = prereqIds.map(id => {
+  const prereqNames = prereqIds.map((id) => {
     // Procura a disciplina correspondente ao pré-requisito
-    const found = SKILLS.find(s => s.id === id);
+    const found = SKILLS.find((s) => s.id === id);
     // Retorna o nome formatado ou o ID como fallback
     return found ? found.name : id;
   });
 
   // Descrição detalhada da matéria com fallback informativo
-  const description = skill.description || config?.notes || "Disciplina que desenvolve conceitos teóricos e práticos essenciais para a sua formação acadêmica.";
+  const description =
+    skill.description ||
+    config?.notes ||
+    "Disciplina que desenvolve conceitos teóricos e práticos essenciais para a sua formação acadêmica.";
 
   // Hook do React Flow para acesso direto às funções de viewport
   let reactFlow: any = null;
@@ -75,9 +79,11 @@ export function SkillDetailView({ skill, onBack, onClose }: SkillDetailViewProps
     }
 
     // Dispara evento global customizado para que o mapa navegue até o nó com zoom máximo
-    window.dispatchEvent(new CustomEvent('focus-skill-node', {
-      detail: { skillId: skill.id }
-    }));
+    window.dispatchEvent(
+      new CustomEvent("focus-skill-node", {
+        detail: { skillId: skill.id },
+      })
+    );
 
     // Se o hook do React Flow estiver disponível diretamente
     if (reactFlow) {
@@ -109,7 +115,8 @@ export function SkillDetailView({ skill, onBack, onClose }: SkillDetailViewProps
       transition={{ duration: 0.18, ease: "easeOut" }} // Curva suave rápida
       className="flex flex-col h-full w-full select-none"
       style={{
-        fontFamily: 'var(--font-geist-sans), system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif'
+        fontFamily:
+          'var(--font-geist-sans), system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
       }}
     >
       {/* Cabeçalho compacto com botão de voltar, título e botão de fechar */}
@@ -157,8 +164,8 @@ export function SkillDetailView({ skill, onBack, onClose }: SkillDetailViewProps
             className="absolute inset-0 rounded-xl blur-lg opacity-50 pointer-events-none"
             style={{
               background: isAcquired
-                ? 'radial-gradient(circle, rgba(74, 222, 128, 0.3) 0%, transparent 70%)'
-                : 'radial-gradient(circle, rgba(56, 189, 248, 0.2) 0%, transparent 70%)'
+                ? "radial-gradient(circle, rgba(74, 222, 128, 0.3) 0%, transparent 70%)"
+                : "radial-gradient(circle, rgba(56, 189, 248, 0.2) 0%, transparent 70%)",
             }}
           />
 
@@ -222,9 +229,7 @@ export function SkillDetailView({ skill, onBack, onClose }: SkillDetailViewProps
         {/* Cartão de descrição e pré-requisitos ajustado com rolagem própria se necessário */}
         <div className="w-full mt-2 bg-[#101419]/70 border border-white/[0.06] rounded-lg p-2.5 text-left mb-1 flex flex-col gap-1.5 max-h-[110px] overflow-y-auto custom-scrollbar">
           {/* Texto de descrição */}
-          <p className="text-[11px] text-zinc-300/90 leading-relaxed font-normal">
-            {description}
-          </p>
+          <p className="text-[11px] text-zinc-300/90 leading-relaxed font-normal">{description}</p>
 
           {/* Seção de pré-requisitos */}
           {prereqNames.length > 0 ? (

@@ -14,7 +14,7 @@ Este documento serve como um checklist para a implementação de boas práticas 
   - Criar o arquivo `src/app/error.tsx` com uma UI amigável.
   - Criar o arquivo `src/app/not-found.tsx` para lidar com rotas inexistentes.
 
-- [ ] **Task 4: Formatação de Código (Prettier)**
+- [x] **Task 4: Formatação de Código (Prettier)**
   - Instalar o pacote `prettier` como dependência de desenvolvimento.
   - Criar o arquivo de configuração `.prettierrc`.
   - Adicionar o script `"format": "prettier --write ."` no `package.json`.

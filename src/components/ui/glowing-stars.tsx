@@ -25,21 +25,22 @@ export const GlowingStarsBackgroundCard = ({
         "bg-[linear-gradient(110deg,#333_0.6%,#222)] flex flex-col items-center justify-center p-4 transition-transform duration-500 hover:scale-105",
         className
       )}
-      style={{
-        "--r": "24px",
-        width: "280px",
-        aspectRatio: "1",
-        margin: "calc(0.4142 * var(--r))",
-        clipPath: "polygon(50% 0, 100% 50%, 50% 100%, 0 50%) margin-box",
-        "--_g": "/ calc(2*var(--r)) calc(2*var(--r)) radial-gradient(#000 70%,#0000 72%)",
-        "--_s": "calc(100% - (1 - 0.4142)*var(--r))",
-        mask: "conic-gradient(#000 0 0) no-repeat 50%/var(--_s) var(--_s), top var(--_g) no-repeat space, left var(--_g) space no-repeat",
-        WebkitMask: "conic-gradient(#000 0 0) no-repeat 50%/var(--_s) var(--_s), top var(--_g) no-repeat space, left var(--_g) space no-repeat",
-      } as React.CSSProperties}
+      style={
+        {
+          "--r": "24px",
+          width: "280px",
+          aspectRatio: "1",
+          margin: "calc(0.4142 * var(--r))",
+          clipPath: "polygon(50% 0, 100% 50%, 50% 100%, 0 50%) margin-box",
+          "--_g": "/ calc(2*var(--r)) calc(2*var(--r)) radial-gradient(#000 70%,#0000 72%)",
+          "--_s": "calc(100% - (1 - 0.4142)*var(--r))",
+          mask: "conic-gradient(#000 0 0) no-repeat 50%/var(--_s) var(--_s), top var(--_g) no-repeat space, left var(--_g) space no-repeat",
+          WebkitMask:
+            "conic-gradient(#000 0 0) no-repeat 50%/var(--_s) var(--_s), top var(--_g) no-repeat space, left var(--_g) space no-repeat",
+        } as React.CSSProperties
+      }
     >
-      <div className="flex flex-1 justify-center items-center">
-        {children}
-      </div>
+      <div className="flex flex-1 justify-center items-center">{children}</div>
     </div>
   );
 };
@@ -51,11 +52,7 @@ export const GlowingStarsDescription = ({
   className?: string;
   children?: React.ReactNode;
 }) => {
-  return (
-    <p className={cn("text-base text-white max-w-[16rem]", className)}>
-      {children}
-    </p>
-  );
+  return <p className={cn("text-base text-white max-w-[16rem]", className)}>{children}</p>;
 };
 
 export const GlowingStarsTitle = ({
@@ -65,11 +62,7 @@ export const GlowingStarsTitle = ({
   className?: string;
   children?: React.ReactNode;
 }) => {
-  return (
-    <h2 className={cn("font-bold text-2xl text-[#eaeaea]", className)}>
-      {children}
-    </h2>
-  );
+  return <h2 className={cn("font-bold text-2xl text-[#eaeaea]", className)}>{children}</h2>;
 };
 
 export const Illustration = ({ mouseEnter }: { mouseEnter: boolean }) => {
@@ -82,9 +75,7 @@ export const Illustration = ({ mouseEnter }: { mouseEnter: boolean }) => {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      highlightedStars.current = Array.from({ length: 5 }, () =>
-        Math.floor(Math.random() * stars)
-      );
+      highlightedStars.current = Array.from({ length: 5 }, () => Math.floor(Math.random() * stars));
       setGlowingStars([...highlightedStars.current]);
     }, 3000);
 
@@ -105,18 +96,13 @@ export const Illustration = ({ mouseEnter }: { mouseEnter: boolean }) => {
         const delay = (starIdx % 10) * 0.1;
         const staticDelay = starIdx * 0.01;
         return (
-          <div
-            key={`matrix-col-${starIdx}}`}
-            className="relative flex items-center justify-center"
-          >
+          <div key={`matrix-col-${starIdx}}`} className="relative flex items-center justify-center">
             <Star
               isGlowing={mouseEnter ? true : isGlowing}
               delay={mouseEnter ? staticDelay : delay}
             />
             {mouseEnter && <Glow delay={staticDelay} />}
-            <AnimatePresence mode="wait">
-              {isGlowing && <Glow delay={delay} />}
-            </AnimatePresence>
+            <AnimatePresence mode="wait">{isGlowing && <Glow delay={delay} />}</AnimatePresence>
           </div>
         );
       })}

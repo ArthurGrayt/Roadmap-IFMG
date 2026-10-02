@@ -1,4 +1,4 @@
-import { create } from 'zustand';
+import { create } from "zustand";
 
 interface SkillStore {
   acquiredSkills: Set<string>;
@@ -16,7 +16,7 @@ interface SkillStore {
 
 export const useSkillStore = create<SkillStore>((set, get) => ({
   acquiredSkills: new Set<string>(),
-  
+
   toggleSkill: (skillId, isActive, nodesToDeactivate = []) => {
     set((state) => {
       const newSet = new Set(state.acquiredSkills);
@@ -24,7 +24,7 @@ export const useSkillStore = create<SkillStore>((set, get) => ({
         newSet.add(skillId);
       } else {
         newSet.delete(skillId);
-        nodesToDeactivate.forEach(id => newSet.delete(id));
+        nodesToDeactivate.forEach((id) => newSet.delete(id));
       }
       return { acquiredSkills: newSet };
     });
@@ -36,7 +36,7 @@ export const useSkillStore = create<SkillStore>((set, get) => ({
 
   careerTrail: [],
   setCareerTrail: (skills) => set({ careerTrail: skills }),
-  
+
   activeRole: null,
   setActiveRole: (role) => set({ activeRole: role }),
 

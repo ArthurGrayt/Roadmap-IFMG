@@ -52,7 +52,7 @@ export function RoleSkillsView({ skills, viewMode, onSkillClick }: RoleSkillsVie
           {/* Visualização em modo Grade (Grid de Losangos) */}
           {viewMode === "grid" ? (
             // Contêiner animado do grid com transição suave
-            <motion.div 
+            <motion.div
               key="grid"
               initial={{ opacity: 0, scale: 0.96 }} // Entrada sutil
               animate={{ opacity: 1, scale: 1 }} // Estado ativo
@@ -94,7 +94,7 @@ export function RoleSkillsView({ skills, viewMode, onSkillClick }: RoleSkillsVie
             </motion.div>
           ) : (
             // Visualização em modo Lista (Cards horizontais estáveis e sem glitches)
-            <motion.div 
+            <motion.div
               key="list"
               initial={{ opacity: 0, scale: 0.96 }} // Entrada sutil
               animate={{ opacity: 1, scale: 1 }} // Estado ativo
@@ -123,22 +123,26 @@ export function RoleSkillsView({ skills, viewMode, onSkillClick }: RoleSkillsVie
                     onClick={() => onSkillClick && onSkillClick(skill)} // Dispara abertura dos detalhes
                   >
                     {/* Card estilizado com transição de fundo e borda limpas */}
-                    <div className={cn(
-                      "w-full h-[46px] bg-[#222a33] hover:bg-[#2c3642] border border-white/[0.06] hover:border-white/[0.14] rounded-xl flex items-center px-3 shadow-sm transition-all duration-150 group",
-                      index === skills.length - 1 && "mb-2" // Margem inferior no último item
-                    )}>
+                    <div
+                      className={cn(
+                        "w-full h-[46px] bg-[#222a33] hover:bg-[#2c3642] border border-white/[0.06] hover:border-white/[0.14] rounded-xl flex items-center px-3 shadow-sm transition-all duration-150 group",
+                        index === skills.length - 1 && "mb-2" // Margem inferior no último item
+                      )}
+                    >
                       {/* Ícone da disciplina */}
-                      <div className={cn(
-                        "w-7 h-7 rounded-lg flex items-center justify-center mr-2.5 shrink-0 transition-colors duration-150",
-                        isAcquired 
-                          ? "bg-emerald-500/15 text-emerald-400" 
-                          : "bg-white/[0.05] text-zinc-400 group-hover:text-zinc-200"
-                      )}>
+                      <div
+                        className={cn(
+                          "w-7 h-7 rounded-lg flex items-center justify-center mr-2.5 shrink-0 transition-colors duration-150",
+                          isAcquired
+                            ? "bg-emerald-500/15 text-emerald-400"
+                            : "bg-white/[0.05] text-zinc-400 group-hover:text-zinc-200"
+                        )}
+                      >
                         <skill.icon className="w-3.5 h-3.5" strokeWidth={1.8} />
                       </div>
 
                       {/* Título da matéria estável com truncamento suave e tooltip nativo */}
-                      <span 
+                      <span
                         className={cn(
                           "font-semibold text-[13px] tracking-normal truncate flex-1 text-left transition-colors duration-150",
                           isAcquired ? "text-emerald-400" : "text-zinc-200 group-hover:text-white"

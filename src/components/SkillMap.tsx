@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useEffect, useRef, useMemo } from 'react';
+import React, { useState, useCallback, useEffect, useRef, useMemo } from "react";
 import {
   ReactFlow,
   Controls,
@@ -11,15 +11,15 @@ import {
   Handle,
   Position,
   useReactFlow,
-  Panel
-} from '@xyflow/react';
-import '@xyflow/react/dist/style.css';
-import { DiamondCard } from '@/components/diamond-card';
-import { UserProfileNode } from '@/components/UserProfileNode';
-import { SKILLS } from '@/data/skills-config';
-import { ALL_SKILLS, CAREER_DATA } from '@/data/rolesData';
-import layoutData from '@/data/skill-layout.json';
-import { useSkillStore } from '@/store/useSkillStore';
+  Panel,
+} from "@xyflow/react";
+import "@xyflow/react/dist/style.css";
+import { DiamondCard } from "@/components/diamond-card";
+import { UserProfileNode } from "@/components/UserProfileNode";
+import { SKILLS } from "@/data/skills-config";
+import { ALL_SKILLS, CAREER_DATA } from "@/data/rolesData";
+import layoutData from "@/data/skill-layout.json";
+import { useSkillStore } from "@/store/useSkillStore";
 
 const DiamondNode = ({ id, data }: any) => {
   const { setEdges, setNodes, getNodes } = useReactFlow();
@@ -27,69 +27,82 @@ const DiamondNode = ({ id, data }: any) => {
 
   const handleStatusChange = (isActive: boolean) => {
     const nodes = getNodes();
-    
+
     // Regra 1: Não pode acender se os pré-requisitos não estiverem acesos
     if (isActive) {
-      const skill = SKILLS.find(s => s.id === id);
+      const skill = SKILLS.find((s) => s.id === id);
       if (skill) {
-        const reqs = skill.logicalPrerequisites.length > 0 ? skill.logicalPrerequisites : skill.officialPrerequisites;
-        const missingReqId = reqs.find(reqId => {
-          const reqNode = nodes.find(n => n.id === reqId);
+        const reqs =
+          skill.logicalPrerequisites.length > 0
+            ? skill.logicalPrerequisites
+            : skill.officialPrerequisites;
+        const missingReqId = reqs.find((reqId) => {
+          const reqNode = nodes.find((n) => n.id === reqId);
           return reqNode?.data.status !== "adquirido";
         });
 
         if (missingReqId) {
           // Eleva temporariamente o zIndex do nó clicado para que o tooltip sobreponha qualquer badge ou elemento vizinho
-          setNodes(nds => nds.map(n => n.id === id ? { ...n, zIndex: 99999 } : n));
+          setNodes((nds) => nds.map((n) => (n.id === id ? { ...n, zIndex: 99999 } : n)));
 
           // Destaca a linha (cabo) que conecta a matéria atual ao pré-requisito faltante
-          setEdges(eds => eds.map(edge => {
-            // Verifica se a conexão liga o nó atual ao pré-requisito faltante
-            if ((edge.source === missingReqId && edge.target === id) || (edge.target === missingReqId && edge.source === id)) {
-              // Retorna a conexão com animação pulsante e cor vermelha
-              return {
-                ...edge,
-                animated: true, // Faz a linha pulsar
-                style: { 
-                  ...edge.style, 
-                  stroke: '#ff3333', // Vermelho brilhante
-                  strokeWidth: 3, 
-                  filter: 'drop-shadow(0 0 8px rgba(255, 51, 51, 0.6))' 
-                }
-              };
-            }
-            // Retorna o cabo sem modificações
-            return edge;
-          }));
-
-          // Reverte a linha e o zIndex para o estado original após 3 segundos
-          setTimeout(() => {
-            // Restaura o zIndex do nó para o padrão
-            setNodes(nds => nds.map(n => n.id === id ? { ...n, zIndex: 10 } : n));
-
-            // Restaura o estilo do cabo elétrico
-            setEdges(eds => eds.map(edge => {
-              // Verifica se é o cabo que foi destacado
-              if ((edge.source === missingReqId && edge.target === id) || (edge.target === missingReqId && edge.source === id)) {
-                // Retorna o estilo inativo original
+          setEdges((eds) =>
+            eds.map((edge) => {
+              // Verifica se a conexão liga o nó atual ao pré-requisito faltante
+              if (
+                (edge.source === missingReqId && edge.target === id) ||
+                (edge.target === missingReqId && edge.source === id)
+              ) {
+                // Retorna a conexão com animação pulsante e cor vermelha
                 return {
                   ...edge,
-                  animated: false,
-                  style: { 
-                    ...edge.style, 
-                    stroke: '#4b5563', // Retorna ao cinza padrão de inativo
-                    strokeWidth: 1, 
-                    filter: 'none' 
-                  }
+                  animated: true, // Faz a linha pulsar
+                  style: {
+                    ...edge.style,
+                    stroke: "#ff3333", // Vermelho brilhante
+                    strokeWidth: 3,
+                    filter: "drop-shadow(0 0 8px rgba(255, 51, 51, 0.6))",
+                  },
                 };
               }
               // Retorna o cabo sem modificações
               return edge;
-            }));
+            })
+          );
+
+          // Reverte a linha e o zIndex para o estado original após 3 segundos
+          setTimeout(() => {
+            // Restaura o zIndex do nó para o padrão
+            setNodes((nds) => nds.map((n) => (n.id === id ? { ...n, zIndex: 10 } : n)));
+
+            // Restaura o estilo do cabo elétrico
+            setEdges((eds) =>
+              eds.map((edge) => {
+                // Verifica se é o cabo que foi destacado
+                if (
+                  (edge.source === missingReqId && edge.target === id) ||
+                  (edge.target === missingReqId && edge.source === id)
+                ) {
+                  // Retorna o estilo inativo original
+                  return {
+                    ...edge,
+                    animated: false,
+                    style: {
+                      ...edge.style,
+                      stroke: "#4b5563", // Retorna ao cinza padrão de inativo
+                      strokeWidth: 1,
+                      filter: "none",
+                    },
+                  };
+                }
+                // Retorna o cabo sem modificações
+                return edge;
+              })
+            );
           }, 3000);
 
           // Retorna o Nome da Matéria que faltou para acionar o modal no DiamondCard
-          const missingSkill = SKILLS.find(s => s.id === missingReqId);
+          const missingSkill = SKILLS.find((s) => s.id === missingReqId);
           // Retorna o título da matéria ou fallback
           return missingSkill ? missingSkill.name : "Pré-requisito desconhecido";
         }
@@ -98,29 +111,30 @@ const DiamondNode = ({ id, data }: any) => {
 
     // Regra 2: Se estiver desligando (apagando), precisamos apagar toda a árvore de descendentes!
     const nodesToDeactivate = new Set<string>();
-    
+
     if (!isActive) {
       // Função recursiva para achar filhos, netos, bisnetos...
       const findDescendants = (parentId: string) => {
-        const children = SKILLS.filter(s => 
-          s.logicalPrerequisites.includes(parentId as any) || 
-          s.officialPrerequisites.includes(parentId as any)
-        ).map(s => s.id);
-        
-        children.forEach(childId => {
+        const children = SKILLS.filter(
+          (s) =>
+            s.logicalPrerequisites.includes(parentId as any) ||
+            s.officialPrerequisites.includes(parentId as any)
+        ).map((s) => s.id);
+
+        children.forEach((childId) => {
           if (!nodesToDeactivate.has(childId)) {
             nodesToDeactivate.add(childId);
             findDescendants(childId); // Busca os filhos do filho
           }
         });
       };
-      
+
       findDescendants(id);
     }
 
     // Atualiza o status global nos nós (Cards)
-    setNodes(nds => 
-      nds.map(n => {
+    setNodes((nds) =>
+      nds.map((n) => {
         // Altera o nó clicado
         if (n.id === id) {
           return { ...n, data: { ...n.data, status: isActive ? "adquirido" : "pendente" } };
@@ -138,17 +152,27 @@ const DiamondNode = ({ id, data }: any) => {
 
     // Função auxiliar para descobrir quem é o PAI numa relação de conexão (Edge)
     const getEdgeParent = (source: string, target: string) => {
-      const tSkill = SKILLS.find(s => s.id === target);
-      if (tSkill && (tSkill.logicalPrerequisites.includes(source as any) || tSkill.officialPrerequisites.includes(source as any))) return source;
-      
-      const sSkill = SKILLS.find(s => s.id === source);
-      if (sSkill && (sSkill.logicalPrerequisites.includes(target as any) || sSkill.officialPrerequisites.includes(target as any))) return target;
-      
+      const tSkill = SKILLS.find((s) => s.id === target);
+      if (
+        tSkill &&
+        (tSkill.logicalPrerequisites.includes(source as any) ||
+          tSkill.officialPrerequisites.includes(source as any))
+      )
+        return source;
+
+      const sSkill = SKILLS.find((s) => s.id === source);
+      if (
+        sSkill &&
+        (sSkill.logicalPrerequisites.includes(target as any) ||
+          sSkill.officialPrerequisites.includes(target as any))
+      )
+        return target;
+
       return null;
     };
 
     // Atualiza os cabos elétricos (Edges)
-    setEdges((eds) => 
+    setEdges((eds) =>
       eds.map((edge) => {
         const parentId = getEdgeParent(edge.source, edge.target);
 
@@ -156,24 +180,72 @@ const DiamondNode = ({ id, data }: any) => {
         return edge;
       })
     );
-    
+
     return true; // Permite a mudança na UI local do Card
   };
 
   return (
     <div className="relative">
       {/* Target Handles (entradas) invisíveis (inline style) posicionadas na margem 0 para tocar a expansão externa do SVG */}
-      <Handle type="target" id="t-top" position={Position.Top} isConnectable={false} style={{ opacity: 0, border: 'none' }} />
-      <Handle type="target" id="t-bottom" position={Position.Bottom} isConnectable={false} style={{ opacity: 0, border: 'none' }} />
-      <Handle type="target" id="t-left" position={Position.Left} isConnectable={false} style={{ opacity: 0, border: 'none' }} />
-      <Handle type="target" id="t-right" position={Position.Right} isConnectable={false} style={{ opacity: 0, border: 'none' }} />
+      <Handle
+        type="target"
+        id="t-top"
+        position={Position.Top}
+        isConnectable={false}
+        style={{ opacity: 0, border: "none" }}
+      />
+      <Handle
+        type="target"
+        id="t-bottom"
+        position={Position.Bottom}
+        isConnectable={false}
+        style={{ opacity: 0, border: "none" }}
+      />
+      <Handle
+        type="target"
+        id="t-left"
+        position={Position.Left}
+        isConnectable={false}
+        style={{ opacity: 0, border: "none" }}
+      />
+      <Handle
+        type="target"
+        id="t-right"
+        position={Position.Right}
+        isConnectable={false}
+        style={{ opacity: 0, border: "none" }}
+      />
 
       {/* Source Handles (saídas) invisíveis na margem 0 */}
-      <Handle type="source" id="s-top" position={Position.Top} isConnectable={false} style={{ opacity: 0, border: 'none' }} />
-      <Handle type="source" id="s-bottom" position={Position.Bottom} isConnectable={false} style={{ opacity: 0, border: 'none' }} />
-      <Handle type="source" id="s-left" position={Position.Left} isConnectable={false} style={{ opacity: 0, border: 'none' }} />
-      <Handle type="source" id="s-right" position={Position.Right} isConnectable={false} style={{ opacity: 0, border: 'none' }} />
-      
+      <Handle
+        type="source"
+        id="s-top"
+        position={Position.Top}
+        isConnectable={false}
+        style={{ opacity: 0, border: "none" }}
+      />
+      <Handle
+        type="source"
+        id="s-bottom"
+        position={Position.Bottom}
+        isConnectable={false}
+        style={{ opacity: 0, border: "none" }}
+      />
+      <Handle
+        type="source"
+        id="s-left"
+        position={Position.Left}
+        isConnectable={false}
+        style={{ opacity: 0, border: "none" }}
+      />
+      <Handle
+        type="source"
+        id="s-right"
+        position={Position.Right}
+        isConnectable={false}
+        style={{ opacity: 0, border: "none" }}
+      />
+
       {/* Renderiza o componente DiamondCard com todas as propriedades visuais e de interação */}
       <DiamondCard
         title={data.label} // Título da matéria
@@ -192,45 +264,45 @@ const DiamondNode = ({ id, data }: any) => {
 // Componente customizado para o Badge de Período
 const BadgeNode = ({ data }: any) => {
   // Extrai apenas os números da string (Ex: "4º Período" -> "4")
-  const periodNumber = data.label.replace(/\D/g, '');
+  const periodNumber = data.label.replace(/\D/g, "");
 
   return (
-    <div 
+    <div
       className="transition-all duration-300 hover:scale-105 cursor-default"
-      style={{ 
-        display: 'flex',
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'center',
-        height: '56px',
-        padding: '0 28px',
-        borderRadius: '14px',
-        background: '#1e252c', 
-        border: '1px solid rgba(255, 255, 255, 0.08)',
-        boxShadow: '0 10px 30px rgba(0,0,0,0.5)',
-        gap: '16px'
+      style={{
+        display: "flex",
+        flexDirection: "row",
+        alignItems: "center",
+        justifyContent: "center",
+        height: "56px",
+        padding: "0 28px",
+        borderRadius: "14px",
+        background: "#1e252c",
+        border: "1px solid rgba(255, 255, 255, 0.08)",
+        boxShadow: "0 10px 30px rgba(0,0,0,0.5)",
+        gap: "16px",
       }}
     >
-      <span 
+      <span
         style={{
           fontFamily: '"Inter", "Segoe UI", sans-serif',
-          fontSize: '11px',
-          color: '#8BA5C2',
-          letterSpacing: '0.2em',
+          fontSize: "11px",
+          color: "#8BA5C2",
+          letterSpacing: "0.2em",
           fontWeight: 700,
-          textTransform: 'uppercase'
+          textTransform: "uppercase",
         }}
       >
         Período
       </span>
-      <span 
-        style={{ 
+      <span
+        style={{
           fontFamily: '"Inter", "Outfit", "Segoe UI", Roboto, Helvetica, Arial, sans-serif',
-          fontSize: '32px', 
-          lineHeight: '1',
-          color: '#38bdf8', 
+          fontSize: "32px",
+          lineHeight: "1",
+          color: "#38bdf8",
           fontWeight: 900,
-          letterSpacing: '-1px' 
+          letterSpacing: "-1px",
         }}
       >
         {periodNumber}
@@ -250,26 +322,26 @@ const nodeTypes = {
 // Injeta os dados originais no layout estático para recuperar os ícones e travar a edição
 const initialNodes: Node[] = layoutData.nodes.map((node: any) => {
   // Retorna nó de avatar imutável com zIndex padrão
-  if (node.id === 'avatar') return { ...node, draggable: false, selectable: false, zIndex: 10 };
+  if (node.id === "avatar") return { ...node, draggable: false, selectable: false, zIndex: 10 };
   // Obtém dados da skill para recuperar ícone e label
   const uiSkill = ALL_SKILLS[node.id];
   // Retorna nó da matéria configurado e travado
   return {
     ...node, // Propriedades originais
-    draggable: false,  // Trava movimento manual
+    draggable: false, // Trava movimento manual
     selectable: false, // Trava contorno de seleção
-    zIndex: 10,        // Garante que cards de matérias fiquem acima das badges de período
+    zIndex: 10, // Garante que cards de matérias fiquem acima das badges de período
     data: {
       ...node.data, // Mantém dados internos
       status: "pendente", // Garante que nenhum card (mesmo nível 1) comece já aceso
       icon: uiSkill ? uiSkill.icon : undefined, // Ícone da matéria
       label: uiSkill ? uiSkill.title : node.data.label, // Nome da matéria
-    }
+    },
   };
 });
 
 // Descobre o limite direito e o centro horizontal
-const validNodes = layoutData.nodes.filter((n: any) => n.id !== 'avatar');
+const validNodes = layoutData.nodes.filter((n: any) => n.id !== "avatar");
 // Menor coordenada X
 const minX = Math.min(...validNodes.map((n: any) => n.position.x));
 // Maior coordenada X
@@ -286,7 +358,7 @@ const yToPeriod: Record<number, string> = {
   [-1250]: "5º Período",
   [-1600]: "6º Período",
   [-1950]: "7º Período",
-  [-2300]: "8º Período"
+  [-2300]: "8º Período",
 };
 
 // Gera os nós de Badge fixados à direita (+220px do Max X)
@@ -296,7 +368,7 @@ const badgeNodes: Node[] = Object.entries(yToPeriod).map(([yStr, period]) => {
   // Retorna a estrutura do nó de badge
   return {
     id: `badge-${y}`, // Identificador único da badge
-    type: 'badge', // Tipo customizado
+    type: "badge", // Tipo customizado
     // Y + 42 é a matemática exata (Losango 140px / Badge 56px)
     position: { x: maxX + 220, y: y + 42 },
     draggable: false, // Trava arrastar
@@ -304,8 +376,8 @@ const badgeNodes: Node[] = Object.entries(yToPeriod).map(([yStr, period]) => {
     zIndex: 1, // zIndex inferior para ficar sempre atrás de cards e modais/tooltips
     data: {
       label: period, // Texto do período
-      originalX: maxX + 220 // Coordenada base para cálculo de expansão
-    }
+      originalX: maxX + 220, // Coordenada base para cálculo de expansão
+    },
   };
 });
 
@@ -314,9 +386,8 @@ const initialNodesWithBadges = [...initialNodes, ...badgeNodes];
 const initialEdges: Edge[] = layoutData.edges.map((edge: any) => ({
   ...edge,
   selectable: false,
-  focusable: false
+  focusable: false,
 }));
-
 
 export function SkillMap() {
   // Lista de nós do React Flow contendo matérias e badges de período
@@ -333,10 +404,10 @@ export function SkillMap() {
 
   const completedRolesCount = useMemo(() => {
     let count = 0;
-    CAREER_DATA.forEach(category => {
-      category.roles.forEach(role => {
+    CAREER_DATA.forEach((category) => {
+      category.roles.forEach((role) => {
         if (role.skills && role.skills.length > 0) {
-          const isCompleted = role.skills.every(skillId => acquiredSkills.has(skillId));
+          const isCompleted = role.skills.every((skillId) => acquiredSkills.has(skillId));
           if (isCompleted) count++;
         }
       });
@@ -349,7 +420,7 @@ export function SkillMap() {
       if (rfInstance) {
         // Aguarda 800ms para o usuário ver o node atual ficar verde antes de voar a câmera
         setTimeout(() => {
-          const avatarNode = nodes.find(n => n.id === 'avatar');
+          const avatarNode = nodes.find((n) => n.id === "avatar");
           if (avatarNode) {
             const centerX = avatarNode.position.x + 200;
             const centerY = avatarNode.position.y + 150;
@@ -371,9 +442,12 @@ export function SkillMap() {
         const current = queue.shift()!;
         if (!fullTrail.has(current)) {
           fullTrail.add(current);
-          const skill = SKILLS.find(s => s.id === current);
+          const skill = SKILLS.find((s) => s.id === current);
           if (skill) {
-            const reqs = skill.logicalPrerequisites.length > 0 ? skill.logicalPrerequisites : skill.officialPrerequisites;
+            const reqs =
+              skill.logicalPrerequisites.length > 0
+                ? skill.logicalPrerequisites
+                : skill.officialPrerequisites;
             queue.push(...reqs);
           }
         }
@@ -383,57 +457,81 @@ export function SkillMap() {
 
     const fullTrailSet = getFullTrail(careerTrail);
 
-    setNodes(nds => nds.map(n => {
-      if (n.id === 'avatar' || n.type === 'badge') return n;
-      const isAcquired = acquiredSkills.has(n.id);
-      const isTrail = fullTrailSet.has(n.id) && !isAcquired;
-      
-      let newStatus = isAcquired ? "adquirido" : "pendente";
-      
-      if (n.data.status !== newStatus || n.data.isTrail !== isTrail) {
-        return { ...n, data: { ...n.data, status: newStatus, isTrail } };
-      }
-      return n;
-    }));
+    setNodes((nds) =>
+      nds.map((n) => {
+        if (n.id === "avatar" || n.type === "badge") return n;
+        const isAcquired = acquiredSkills.has(n.id);
+        const isTrail = fullTrailSet.has(n.id) && !isAcquired;
 
-    setEdges(eds => eds.map(edge => {
-      const getEdgeParent = (source: string, target: string) => {
-        const tSkill = SKILLS.find(s => s.id === target);
-        if (tSkill && (tSkill.logicalPrerequisites.includes(source as any) || tSkill.officialPrerequisites.includes(source as any))) return source;
-        const sSkill = SKILLS.find(s => s.id === source);
-        if (sSkill && (sSkill.logicalPrerequisites.includes(target as any) || sSkill.officialPrerequisites.includes(target as any))) return target;
-        return null;
-      };
+        let newStatus = isAcquired ? "adquirido" : "pendente";
 
-      const parentId = getEdgeParent(edge.source, edge.target);
-      // A linha fica verde (adquirida) se a disciplina PAI daquela linha foi adquirida
-      const isAcquiredEdge = parentId ? acquiredSkills.has(parentId) : false;
-      
-      // A linha faz parte da trilha amarela se ela leva a uma disciplina da trilha e o pai ainda NÃO foi adquirido
-      // O parentId é o pré-requisito (a origem do cabo), a outra ponta é o target (o destino do cabo)
-      const childId = parentId === edge.source ? edge.target : edge.source;
-      const isTrailEdge = fullTrailSet.has(childId) && !isAcquiredEdge;
+        if (n.data.status !== newStatus || n.data.isTrail !== isTrail) {
+          return { ...n, data: { ...n.data, status: newStatus, isTrail } };
+        }
+        return n;
+      })
+    );
 
-      if (isAcquiredEdge) {
-        return {
-          ...edge,
-          animated: true,
-          style: { ...edge.style, stroke: '#4ade80', strokeWidth: 2, filter: 'drop-shadow(0 0 5px rgba(74, 222, 128, 0.4))' }
+    setEdges((eds) =>
+      eds.map((edge) => {
+        const getEdgeParent = (source: string, target: string) => {
+          const tSkill = SKILLS.find((s) => s.id === target);
+          if (
+            tSkill &&
+            (tSkill.logicalPrerequisites.includes(source as any) ||
+              tSkill.officialPrerequisites.includes(source as any))
+          )
+            return source;
+          const sSkill = SKILLS.find((s) => s.id === source);
+          if (
+            sSkill &&
+            (sSkill.logicalPrerequisites.includes(target as any) ||
+              sSkill.officialPrerequisites.includes(target as any))
+          )
+            return target;
+          return null;
         };
-      } else if (isTrailEdge) {
-        return {
-          ...edge,
-          animated: true,
-          style: { ...edge.style, stroke: '#facc15', strokeWidth: 2, filter: 'drop-shadow(0 0 8px rgba(250, 204, 21, 0.6))' }
-        };
-      } else {
-        return {
-          ...edge,
-          animated: false,
-          style: { ...edge.style, stroke: '#4b5563', strokeWidth: 1, filter: 'none' }
-        };
-      }
-    }));
+
+        const parentId = getEdgeParent(edge.source, edge.target);
+        // A linha fica verde (adquirida) se a disciplina PAI daquela linha foi adquirida
+        const isAcquiredEdge = parentId ? acquiredSkills.has(parentId) : false;
+
+        // A linha faz parte da trilha amarela se ela leva a uma disciplina da trilha e o pai ainda NÃO foi adquirido
+        // O parentId é o pré-requisito (a origem do cabo), a outra ponta é o target (o destino do cabo)
+        const childId = parentId === edge.source ? edge.target : edge.source;
+        const isTrailEdge = fullTrailSet.has(childId) && !isAcquiredEdge;
+
+        if (isAcquiredEdge) {
+          return {
+            ...edge,
+            animated: true,
+            style: {
+              ...edge.style,
+              stroke: "#4ade80",
+              strokeWidth: 2,
+              filter: "drop-shadow(0 0 5px rgba(74, 222, 128, 0.4))",
+            },
+          };
+        } else if (isTrailEdge) {
+          return {
+            ...edge,
+            animated: true,
+            style: {
+              ...edge.style,
+              stroke: "#facc15",
+              strokeWidth: 2,
+              filter: "drop-shadow(0 0 8px rgba(250, 204, 21, 0.6))",
+            },
+          };
+        } else {
+          return {
+            ...edge,
+            animated: false,
+            style: { ...edge.style, stroke: "#4b5563", strokeWidth: 1, filter: "none" },
+          };
+        }
+      })
+    );
   }, [acquiredSkills, careerTrail, setNodes, setEdges]);
 
   // Escuta requisições de focar disciplina acionadas pelo botão 'Achar Disciplina'
@@ -448,7 +546,7 @@ export function SkillMap() {
       if (!skillId) return;
 
       // Localiza o nó correspondente na lista atual
-      const targetNode = nodes.find(n => n.id === skillId);
+      const targetNode = nodes.find((n) => n.id === skillId);
       // Se encontrou o nó e temos a referência da instância do React Flow
       if (targetNode && rfInstance) {
         // Largura base considerando o estado atual (expandido 390px ou normal 140px)
@@ -464,45 +562,57 @@ export function SkillMap() {
         rfInstance.setCenter(centerX, centerY, { zoom: 1.5, duration: 1100 });
 
         // Eleva o z-index do nó para o topo e ativa o destaque luminoso de localização
-        setNodes(nds => nds.map(n => n.id === skillId ? {
-          ...n, // Mantém dados originais
-          zIndex: 99999, // Fica sobre qualquer outro nó
-          data: { ...n.data, isHighlighted: true } // Ativa halo luminoso no DiamondCard
-        } : n));
+        setNodes((nds) =>
+          nds.map((n) =>
+            n.id === skillId
+              ? {
+                  ...n, // Mantém dados originais
+                  zIndex: 99999, // Fica sobre qualquer outro nó
+                  data: { ...n.data, isHighlighted: true }, // Ativa halo luminoso no DiamondCard
+                }
+              : n
+          )
+        );
 
         // Remove o destaque luminoso após 2 segundos (tempo solicitado pelo usuário)
         setTimeout(() => {
           // Restaura os nós ao estado normal
-          setNodes(nds => nds.map(n => n.id === skillId ? {
-            ...n, // Mantém dados originais
-            zIndex: 10, // Restaura z-index base dos cards
-            data: { ...n.data, isHighlighted: false } // Desativa o contorno azul
-          } : n));
+          setNodes((nds) =>
+            nds.map((n) =>
+              n.id === skillId
+                ? {
+                    ...n, // Mantém dados originais
+                    zIndex: 10, // Restaura z-index base dos cards
+                    data: { ...n.data, isHighlighted: false }, // Desativa o contorno azul
+                  }
+                : n
+            )
+          );
         }, 2000);
       }
     };
 
     // Registra o ouvinte para o evento global
-    window.addEventListener('focus-skill-node', handleFocusSkill);
+    window.addEventListener("focus-skill-node", handleFocusSkill);
     // Remove o ouvinte ao desmontar o componente
-    return () => window.removeEventListener('focus-skill-node', handleFocusSkill);
+    return () => window.removeEventListener("focus-skill-node", handleFocusSkill);
   }, [nodes, rfInstance]);
 
   const toggleExpandAll = () => {
     const newState = !isGlobalExpanded;
     setIsGlobalExpanded(newState);
-    
-    // Fator de escala matemático: 
+
+    // Fator de escala matemático:
     // Normal = 200px por coluna (140px card + 60px gap)
     // Expandido = 450px por coluna (390px card + 60px gap)
     // 450 / 200 = 2.25
     const scaleFactor = newState ? 2.25 : 1.0;
 
-    setNodes((nds) => 
+    setNodes((nds) =>
       nds.map((n) => {
         // Ignora avatar
-        if (n.id === 'avatar') return n;
-        
+        if (n.id === "avatar") return n;
+
         let originalX = 0;
         const originalNode = layoutData.nodes.find((o: any) => o.id === n.id);
         if (originalNode) {
@@ -515,11 +625,11 @@ export function SkillMap() {
 
         // Calcula o novo X ancorado no centro do layout exportado
         const newX = layoutCenterX + (originalX - layoutCenterX) * scaleFactor;
-        
+
         return {
           ...n,
           position: { ...n.position, x: newX },
-          data: { ...n.data, isExpanded: newState }
+          data: { ...n.data, isExpanded: newState },
         };
       })
     );
@@ -527,7 +637,7 @@ export function SkillMap() {
 
   const goToProfile = () => {
     if (rfInstance) {
-      const avatarNode = nodes.find(n => n.id === 'avatar');
+      const avatarNode = nodes.find((n) => n.id === "avatar");
       if (avatarNode) {
         // O nó de perfil (UserProfileNode) tem largura de 400px
         const centerX = avatarNode.position.x + 200;
@@ -599,33 +709,33 @@ export function SkillMap() {
           border-bottom: none !important;
         }
       `}</style>
-      
+
       <ReactFlow
         nodes={nodes}
         edges={edges}
         nodeTypes={nodeTypes}
         onNodesChange={onNodesChange}
         onEdgesChange={onEdgesChange}
-        onInit={setRfInstance}  // Salva a referência da instância para permitir transições de câmera programáticas
-        panOnDrag={true}        // Permite arrastar o canvas clicando no fundo
-        panOnScroll={false}     // Desativa pan via scroll
-        zoomOnScroll={true}     // Ativa zoom via scroll (mouse wheel)
+        onInit={setRfInstance} // Salva a referência da instância para permitir transições de câmera programáticas
+        panOnDrag={true} // Permite arrastar o canvas clicando no fundo
+        panOnScroll={false} // Desativa pan via scroll
+        zoomOnScroll={true} // Ativa zoom via scroll (mouse wheel)
         selectionOnDrag={false} // Desativa o marquee de seleção ao arrastar
         nodesConnectable={false} // Tranca a edição de linhas
         elementsSelectable={false} // Tranca a seleção de linhas e cards
-        nodesDraggable={false}    // Tranca o movimento dos cards
-        minZoom={0.15}          // Permite afastar a câmera
-        maxZoom={1.5}           
+        nodesDraggable={false} // Tranca o movimento dos cards
+        minZoom={0.15} // Permite afastar a câmera
+        maxZoom={1.5}
         fitView
       >
         <Panel position="top-right" className="m-6 flex gap-3">
-          <button 
+          <button
             onClick={goToProfile}
             className="px-5 py-2.5 bg-gradient-to-r from-emerald-500/20 to-teal-500/20 text-emerald-400 border border-emerald-500/30 shadow-[0_0_20px_rgba(16,185,129,0.1)] rounded-xl backdrop-blur-xl hover:bg-emerald-500/30 hover:text-white transition-all font-semibold text-sm flex items-center gap-2"
           >
             Ir para o Perfil
           </button>
-          <button 
+          <button
             onClick={toggleExpandAll}
             className="px-5 py-2.5 bg-[#1A2128]/80 text-white border border-white/10 shadow-[0_10px_30px_rgba(0,0,0,0.5)] rounded-xl backdrop-blur-xl hover:bg-white/10 hover:border-white/20 transition-all font-semibold text-sm flex items-center gap-2"
           >
