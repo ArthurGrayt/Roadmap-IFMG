@@ -12,6 +12,8 @@ import {
   Position,
   useReactFlow,
   Panel,
+  NodeProps,
+  ReactFlowInstance,
 } from "@xyflow/react";
 import "@xyflow/react/dist/style.css";
 import { DiamondCard } from "@/components/diamond-card";
@@ -21,7 +23,16 @@ import { ALL_SKILLS, CAREER_DATA } from "@/data/rolesData";
 import layoutData from "@/data/skill-layout.json";
 import { useSkillStore } from "@/store/useSkillStore";
 
-const DiamondNode = ({ id, data }: any) => {
+interface DiamondNodeData extends Record<string, unknown> {
+  label: string;
+  status?: "pendente" | "adquirido";
+  icon?: React.ElementType;
+  isExpanded?: boolean;
+  isHighlighted?: boolean;
+  isTrail?: boolean;
+}
+
+const DiamondNode = ({ id, data }: NodeProps<Node<DiamondNodeData>>) => {
   const { setEdges, setNodes, getNodes } = useReactFlow();
   const toggleSkill = useSkillStore((state) => state.toggleSkill);
 
@@ -261,8 +272,13 @@ const DiamondNode = ({ id, data }: any) => {
   );
 };
 
+interface BadgeNodeData extends Record<string, unknown> {
+  label: string;
+  originalX?: number;
+}
+
 // Componente customizado para o Badge de Período
-const BadgeNode = ({ data }: any) => {
+const BadgeNode = ({ data }: NodeProps<Node<BadgeNodeData>>) => {
   // Extrai apenas os números da string (Ex: "4º Período" -> "4")
   const periodNumber = data.label.replace(/\D/g, "");
 
@@ -320,7 +336,7 @@ const nodeTypes = {
 };
 
 // Injeta os dados originais no layout estático para recuperar os ícones e travar a edição
-const initialNodes: Node[] = layoutData.nodes.map((node: any) => {
+const initialNodes: Node[] = (layoutData.nodes as Node[]).map((node) => {
   // Retorna nó de avatar imutável com zIndex padrão
   if (node.id === "avatar") return { ...node, draggable: false, selectable: false, zIndex: 10 };
   // Obtém dados da skill para recuperar ícone e label
@@ -341,11 +357,11 @@ const initialNodes: Node[] = layoutData.nodes.map((node: any) => {
 });
 
 // Descobre o limite direito e o centro horizontal
-const validNodes = layoutData.nodes.filter((n: any) => n.id !== "avatar");
+const validNodes = (layoutData.nodes as Node[]).filter((n) => n.id !== "avatar");
 // Menor coordenada X
-const minX = Math.min(...validNodes.map((n: any) => n.position.x));
+const minX = Math.min(...validNodes.map((n) => n.position.x));
 // Maior coordenada X
-const maxX = Math.max(...validNodes.map((n: any) => n.position.x));
+const maxX = Math.max(...validNodes.map((n) => n.position.x));
 // Ponto médio horizontal do layout
 const layoutCenterX = (minX + maxX) / 2;
 
@@ -383,7 +399,7 @@ const badgeNodes: Node[] = Object.entries(yToPeriod).map(([yStr, period]) => {
 
 const initialNodesWithBadges = [...initialNodes, ...badgeNodes];
 
-const initialEdges: Edge[] = layoutData.edges.map((edge: any) => ({
+const initialEdges: Edge[] = (layoutData.edges as Edge[]).map((edge) => ({
   ...edge,
   selectable: false,
   focusable: false,
@@ -396,7 +412,7 @@ export function SkillMap() {
   const [edges, setEdges] = useState<Edge[]>(initialEdges);
   // Estado que rastreia se os cartões estão no modo expandido ou normal
   const [isGlobalExpanded, setIsGlobalExpanded] = useState(false);
-  const [rfInstance, setRfInstance] = useState<any>(null);
+  const [rfInstance, setRfInstance] = useState<ReactFlowInstance | null>(null);
   const acquiredSkills = useSkillStore((state) => state.acquiredSkills);
   const careerTrail = useSkillStore((state) => state.careerTrail);
 
@@ -614,7 +630,7 @@ export function SkillMap() {
         if (n.id === "avatar") return n;
 
         let originalX = 0;
-        const originalNode = layoutData.nodes.find((o: any) => o.id === n.id);
+        const originalNode = (layoutData.nodes as Node[]).find((o) => o.id === n.id);
         if (originalNode) {
           originalX = originalNode.position.x;
         } else if (n.data?.originalX !== undefined) {

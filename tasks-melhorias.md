@@ -23,7 +23,7 @@ Este documento serve como um checklist para a implementação de boas práticas 
   - Criar a pasta `.github/workflows`.
   - Adicionar um workflow `main.yml` para rodar linting e build a cada push ou Pull Request na branch principal.
 
-- [ ] **Task 6: Tipagem Forte e Remoção de `any`**
+- [x] **Task 6: Tipagem Forte e Remoção de `any`**
   - Identificar os usos de `any` em `SkillMap.tsx` (ex: `DiamondNode`, `BadgeNode`).
   - Criar as interfaces de TypeScript apropriadas e aplicá-las.
 
