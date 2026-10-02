@@ -678,9 +678,12 @@ export function SkillMap() {
     // O container usa a tag style (abaixo) para gerenciar o cursor no React Flow
     <div className="w-full h-full absolute inset-0">
       <style>{`
-        /* Cursor padrão e travado */
+        /* Cursor de mãozinha para indicar que o mapa é arrastável */
         .react-flow__pane {
-          cursor: default !important;
+          cursor: grab !important;
+        }
+        .react-flow__pane:active {
+          cursor: grabbing !important;
         }
         .react-flow__node {
           cursor: default !important;

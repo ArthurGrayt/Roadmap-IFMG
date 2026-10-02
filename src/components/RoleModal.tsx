@@ -171,7 +171,7 @@ export function RoleModal({ role, positionTop, onClose }: RoleModalProps) {
                     ?
                   </div>
                   {/* Tooltip flutuante que aparece ao passar o mouse */}
-                  <div className="absolute bottom-full right-0 mb-2 w-44 p-2 bg-[#212930] text-[11px] text-center text-zinc-300 rounded-lg shadow-[0_10px_30px_rgba(0,0,0,0.5)] border border-[#28313A] opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-50 leading-tight">
+                  <div className="absolute right-0 -bottom-12 w-44 p-2 bg-[#212930] text-[11px] text-center text-zinc-300 rounded-lg shadow-[0_10px_30px_rgba(0,0,0,0.5)] border border-[#28313A] opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-50 leading-tight">
                     Disciplinas necessárias para seguir essa carreira
                   </div>
                 </div>
