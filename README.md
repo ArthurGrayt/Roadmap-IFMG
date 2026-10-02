@@ -87,13 +87,13 @@ No lado esquerdo, existe um painel expansível de Trilhas de Carreira:
 - Selecione uma profissão que te interessa e clique nela.  (Ex: "Desenvolvedor Backend").
 - O painel listará todas as matérias que você precisa cursar. 
 - Clique em "Quero Aprender" 
-- **O Caminho Amarelo:** Automaticamente, o sistema desenhará cabos amarelos no mapa traçando a rota exata desde o início até o fim daquela profissão. Se perder uma matéria no mapa? Clique no botão **"Achar"** ao lado do nome da matéria no menu lateral!
+- **O Caminho Amarelo:** Automaticamente, o sistema desenhará cabos amarelos no mapa traçando a rota exata desde o início até o fim daquela profissão!
 
 ![Painel Lateral de Trilhas](public/assets/menu%20lateral.png)
 
 ### 4. Perfil do Usuário
 
-- O seu Avatar fica fixo no topo do mapa.
+- O seu Avatar fica fixo na base da skill tree.
 - Conforme você completa uma trilha inteira (ex: todas as matérias de Cientista de Dados), o sistema automaticamente desliza a câmera até você e mostra uma **Badge com o nome da Profissão** animada e surgindo abaixo da sua foto!
 - **Alterar Foto ou Nome:** A qualquer momento, passe o mouse na foto do seu Avatar para atualizar sua foto, ou no seu nome para editar.
 
