@@ -561,8 +561,12 @@ export function SkillMap() {
           pointer-events: auto !important;
           transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1) !important;
         }
-        /* Remove bordas de foco */
-        .react-flow__node:focus {
+        /* Foco acessível para navegação por teclado */
+        .react-flow__node:focus-visible {
+          outline: 3px solid #38bdf8;
+          outline-offset: 4px;
+        }
+        .react-flow__node:focus:not(:focus-visible) {
           outline: none;
         }
         /* Customiza os controles de zoom */
