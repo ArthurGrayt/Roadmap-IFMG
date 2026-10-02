@@ -10,7 +10,7 @@ Este documento serve como um checklist para a implementação de boas práticas 
   - Atualizar o `metadata` em `layout.tsx` para incluir tags OpenGraph (título, descrição, imagem) e Twitter Cards.
   - (Opcional do usuário) Adicionar uma imagem `og-image.jpg` na pasta `public`.
 
-- [ ] **Task 3: Tratamento de Erros e Fallbacks (Next.js)**
+- [x] **Task 3: Tratamento de Erros e Fallbacks (Next.js)**
   - Criar o arquivo `src/app/error.tsx` com uma UI amigável.
   - Criar o arquivo `src/app/not-found.tsx` para lidar com rotas inexistentes.
 
