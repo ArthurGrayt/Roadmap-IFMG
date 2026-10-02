@@ -27,7 +27,7 @@ Este documento serve como um checklist para a implementação de boas práticas 
   - Identificar os usos de `any` em `SkillMap.tsx` (ex: `DiamondNode`, `BadgeNode`).
   - Criar as interfaces de TypeScript apropriadas e aplicá-las.
 
-- [ ] **Task 7: Testes Automatizados**
+- [x] **Task 7: Testes Automatizados**
   - Configurar Vitest (ou Jest) e React Testing Library.
   - Criar testes unitários para componentes chave (ex: `DiamondCard.tsx`).
   - Configurar um teste E2E básico usando Cypress ou Playwright.
