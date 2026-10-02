@@ -18,7 +18,7 @@ import {
 import "@xyflow/react/dist/style.css";
 import { DiamondCard } from "@/components/diamond-card";
 import { UserProfileNode } from "@/components/UserProfileNode";
-import { SKILLS } from "@/data/skills-config";
+import { SKILLS, SkillId } from "@/data/skills-config";
 import { ALL_SKILLS, CAREER_DATA } from "@/data/rolesData";
 import layoutData from "@/data/skill-layout.json";
 import { useSkillStore } from "@/store/useSkillStore";
@@ -128,8 +128,8 @@ const DiamondNode = ({ id, data }: NodeProps<Node<DiamondNodeData>>) => {
       const findDescendants = (parentId: string) => {
         const children = SKILLS.filter(
           (s) =>
-            s.logicalPrerequisites.includes(parentId as any) ||
-            s.officialPrerequisites.includes(parentId as any)
+            s.logicalPrerequisites.includes(parentId as SkillId) ||
+            s.officialPrerequisites.includes(parentId as SkillId)
         ).map((s) => s.id);
 
         children.forEach((childId) => {
@@ -161,32 +161,9 @@ const DiamondNode = ({ id, data }: NodeProps<Node<DiamondNodeData>>) => {
     // Sync state with global store
     toggleSkill(id, isActive, Array.from(nodesToDeactivate));
 
-    // Função auxiliar para descobrir quem é o PAI numa relação de conexão (Edge)
-    const getEdgeParent = (source: string, target: string) => {
-      const tSkill = SKILLS.find((s) => s.id === target);
-      if (
-        tSkill &&
-        (tSkill.logicalPrerequisites.includes(source as any) ||
-          tSkill.officialPrerequisites.includes(source as any))
-      )
-        return source;
-
-      const sSkill = SKILLS.find((s) => s.id === source);
-      if (
-        sSkill &&
-        (sSkill.logicalPrerequisites.includes(target as any) ||
-          sSkill.officialPrerequisites.includes(target as any))
-      )
-        return target;
-
-      return null;
-    };
-
     // Atualiza os cabos elétricos (Edges)
     setEdges((eds) =>
       eds.map((edge) => {
-        const parentId = getEdgeParent(edge.source, edge.target);
-
         // Deixa o useEffect lidar com a sincronização visual globalmente
         return edge;
       })
@@ -473,13 +450,14 @@ export function SkillMap() {
 
     const fullTrailSet = getFullTrail(careerTrail);
 
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setNodes((nds) =>
       nds.map((n) => {
         if (n.id === "avatar" || n.type === "badge") return n;
         const isAcquired = acquiredSkills.has(n.id);
         const isTrail = fullTrailSet.has(n.id) && !isAcquired;
 
-        let newStatus = isAcquired ? "adquirido" : "pendente";
+        const newStatus = isAcquired ? "adquirido" : "pendente";
 
         if (n.data.status !== newStatus || n.data.isTrail !== isTrail) {
           return { ...n, data: { ...n.data, status: newStatus, isTrail } };
@@ -494,15 +472,15 @@ export function SkillMap() {
           const tSkill = SKILLS.find((s) => s.id === target);
           if (
             tSkill &&
-            (tSkill.logicalPrerequisites.includes(source as any) ||
-              tSkill.officialPrerequisites.includes(source as any))
+            (tSkill.logicalPrerequisites.includes(source as SkillId) ||
+              tSkill.officialPrerequisites.includes(source as SkillId))
           )
             return source;
           const sSkill = SKILLS.find((s) => s.id === source);
           if (
             sSkill &&
-            (sSkill.logicalPrerequisites.includes(target as any) ||
-              sSkill.officialPrerequisites.includes(target as any))
+            (sSkill.logicalPrerequisites.includes(target as SkillId) ||
+              sSkill.officialPrerequisites.includes(target as SkillId))
           )
             return target;
           return null;

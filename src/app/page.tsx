@@ -1,6 +1,5 @@
 "use client";
 
-import { useState } from "react";
 import DotBackgroundDemo from "@/components/dot-background-demo";
 import { SidePanel } from "@/components/SidePanel";
 import { SkillMap } from "@/components/SkillMap";
@@ -11,9 +10,6 @@ import { ReactFlowProvider } from "@xyflow/react";
 
 // Componente principal da página inicial
 export default function Home() {
-  // Estado reservado para controle de expansão global
-  const [isExpanded, setIsExpanded] = useState(false);
-
   // Renderiza a árvore de componentes
   return (
     // Fundo estilizado com grid de pontos

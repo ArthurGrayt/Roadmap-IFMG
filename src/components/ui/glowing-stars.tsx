@@ -11,16 +11,8 @@ export const GlowingStarsBackgroundCard = ({
   className?: string;
   children?: React.ReactNode;
 }) => {
-  const [mouseEnter, setMouseEnter] = useState(false);
-
   return (
     <div
-      onMouseEnter={() => {
-        setMouseEnter(true);
-      }}
-      onMouseLeave={() => {
-        setMouseEnter(false);
-      }}
       className={cn(
         "bg-[linear-gradient(110deg,#333_0.6%,#222)] flex flex-col items-center justify-center p-4 transition-transform duration-500 hover:scale-105",
         className

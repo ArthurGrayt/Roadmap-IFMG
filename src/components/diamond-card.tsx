@@ -42,6 +42,7 @@ export function DiamondCard({
 
   // Sincroniza estado com a prop, caso ela mude
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setIsNeonActive(status === "adquirido");
   }, [status]);
 

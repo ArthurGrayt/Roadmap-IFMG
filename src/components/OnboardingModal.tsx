@@ -55,6 +55,7 @@ export function OnboardingModal() {
               onClick={() => fileInputRef.current?.click()}
             >
               {photo ? (
+                // eslint-disable-next-line @next/next/no-img-element
                 <img src={photo} alt="Preview" className="w-full h-full object-cover" />
               ) : (
                 <>

@@ -6,7 +6,7 @@ import React, { useState, useEffect, useRef } from "react";
 // Importa componentes de animação do framer-motion
 import { motion, AnimatePresence } from "framer-motion";
 // Importa os ícones da biblioteca lucide-react
-import { ChevronDown, ChevronRight, Briefcase, Target, Award } from "lucide-react";
+import { ChevronDown, ChevronRight, Target, Award } from "lucide-react";
 // Importa a função utilitária para concatenação de classes Tailwind
 import { cn } from "@/lib/utils";
 // Importa o componente RoleModal para o tooltip de habilidades da profissão
@@ -211,7 +211,6 @@ export function SidePanel() {
           // Renderiza o modal da carreira ativa passando o callback para fechar
           <RoleModal
             role={activeRole.name}
-            positionTop={activeRole.top}
             onClose={() => setActiveRole(null)} // Fecha o modal ao acionar ação de busca ou fechamento
           />
         )}

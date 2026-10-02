@@ -58,14 +58,7 @@ export function SkillDetailView({ skill, onBack, onClose }: SkillDetailViewProps
     "Disciplina que desenvolve conceitos teóricos e práticos essenciais para a sua formação acadêmica.";
 
   // Hook do React Flow para acesso direto às funções de viewport
-  let reactFlow: any = null;
-  // Tenta obter o contexto do React Flow
-  try {
-    // Chama o hook
-    reactFlow = useReactFlow();
-  } catch (err) {
-    // Silencia caso o contexto ainda não esteja ativo
-  }
+  const reactFlow = useReactFlow();
 
   // Função disparada ao clicar no botão "Achar Disciplina"
   const handleFindSkill = () => {

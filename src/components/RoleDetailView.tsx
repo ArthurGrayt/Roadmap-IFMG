@@ -28,8 +28,6 @@ import {
 } from "lucide-react";
 // Importa a tipagem de Skill
 import { Skill } from "@/data/rolesData";
-// Importa utilitário de combinação de classes
-import { cn } from "@/lib/utils";
 
 // Interface para definir as propriedades recebidas pela tela de detalhes da carreira
 interface RoleDetailViewProps {

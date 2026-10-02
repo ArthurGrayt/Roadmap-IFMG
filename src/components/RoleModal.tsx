@@ -5,12 +5,10 @@
 import React, { useState } from "react";
 // Importa o Framer Motion para animações
 import { motion, AnimatePresence } from "framer-motion";
-// Importa o componente DiamondCard
-import { DiamondCard } from "./diamond-card";
 // Importa o novo componente isolado para visualização de habilidades
 import { RoleSkillsView } from "./RoleSkillsView";
 // Importa os ícones para os botões de alternância de layout e alvo
-import { LayoutGrid, List, Target } from "lucide-react";
+import { LayoutGrid, List } from "lucide-react";
 // Importa a tela de detalhes da disciplina
 import { SkillDetailView } from "./SkillDetailView";
 // Importa a tela de detalhes da profissão
@@ -24,14 +22,12 @@ import { CAREER_DATA, ALL_SKILLS, Skill } from "@/data/rolesData";
 interface RoleModalProps {
   // Nome da profissão selecionada
   role: string;
-  // Posição vertical relativa na tela em pixels
-  positionTop: number;
   // Callback opcional para fechar o modal
   onClose?: () => void;
 }
 
 // Componente RoleModal
-export function RoleModal({ role, positionTop, onClose }: RoleModalProps) {
+export function RoleModal({ role, onClose }: RoleModalProps) {
   // Busca a lista de IDs de habilidades para a profissão
   let skillIds: string[] = [];
   // Nome da categoria à qual a carreira pertence
@@ -76,6 +72,7 @@ export function RoleModal({ role, positionTop, onClose }: RoleModalProps) {
   // Efeito para resetar a seleção caso o modal feche ou mude de profissão
   React.useEffect(() => {
     // Reseta a skill selecionada ao trocar de carreira
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setSelectedSkill(null);
     // Reseta a tela de detalhes da carreira
     setShowRoleDetail(false);

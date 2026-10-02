@@ -1,11 +1,11 @@
 import React, { useRef, useState } from "react";
-import { Sparkles, ShieldCheck, Award, Upload, Pencil } from "lucide-react";
+import { Award, Upload, Pencil } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Handle, Position } from "@xyflow/react";
 import { useSkillStore } from "@/store/useSkillStore";
 import { CAREER_DATA } from "@/data/rolesData";
 
-export const UserProfileNode = ({ data }: any) => {
+export const UserProfileNode = () => {
   const acquiredSkills = useSkillStore((state) => state.acquiredSkills);
   const userName = useSkillStore((state) => state.userName);
   const userPhoto = useSkillStore((state) => state.userPhoto);
@@ -72,6 +72,7 @@ export const UserProfileNode = ({ data }: any) => {
           onClick={() => fileInputRef.current?.click()}
         >
           {userPhoto ? (
+            // eslint-disable-next-line @next/next/no-img-element
             <img
               src={userPhoto}
               alt="Avatar do Usuário"
